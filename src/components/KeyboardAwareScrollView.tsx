@@ -18,8 +18,8 @@ export const KeyboardAwareScrollView = forwardRef<KeyboardAwareScroll, Props>(
     const { navigationTheme } = useNavigationTheme()
 
     const scrollViewContentContainerStyle = useMemo(
-      () =>
-        StyleSheet.compose<ViewStyle>(
+      (): StyleProp<ViewStyle> =>
+        StyleSheet.compose(
           [
             {
               alignItems: 'center',
