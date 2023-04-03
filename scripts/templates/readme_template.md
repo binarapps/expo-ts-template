@@ -4,6 +4,32 @@ This is a template to be used with expo. It includes all the necessary stuff to 
 
 Version in the `package.json` is one to one the latest expo on which the template was tested.
 
+## Scripts
+
+#### 1. Bootstrap - At start you should trigger script
+
+```
+node ./scripts/bootstrap.js
+```
+
+The script gives you opportunity to setup the essentialest variables for your project like app name, bundle ID or android package name
+
+#### 2. Generate new screen
+
+```
+node ./scripts/create_new_screen.js
+```
+
+You can use this script for generate new common screen, tabs screen or new bottom tab, from screen template. You have possiblity to change screen template for your own.
+
+#### 3. Generate new component
+
+```
+node ./scripts/create_new_component.js
+```
+
+You can use this script for generate new common component (atom, molecule, organism, common) from component template. You have possiblity to change component template for your own.
+
 ## Run Locally
 
 1. Clone the project
