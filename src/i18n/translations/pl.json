@@ -78,7 +78,8 @@
     "go_to_typography": "Idź do Typografii",
     "go_to_home_stack_details": "Idź do HomeStackDetails",
     "go_to_settings": "Idź do Ustawień",
-    "go_to_screen_with_BEdata": "Idź do widoku z danymi z backendu"
+    "go_to_screen_with_BEdata": "Idź do widoku z danymi z backendu",
+    "go_to_screen_test_form": "Idź do formularza testowego"
   },
   "components_screen": {
     "test_notification": "Test notification",
