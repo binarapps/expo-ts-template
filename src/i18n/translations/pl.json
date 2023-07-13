@@ -121,6 +121,24 @@
     "sign_out": "Wyloguj!",
     "selected": " - wybrano"
   },
+  "test_form": {
+    "contact_data": "Dane kontaktowe",
+    "name_placeholder": "Imie",
+    "surname_placeholder": "Nazwisko",
+    "email_placeholder": "E-mail",
+    "phone_placeholder": "Telefon",
+    "postalCode_placeholder": "Kod pocztowy",
+    "city_placeholder": "Miasto",
+    "sex": "Płeć",
+    "male": "Mezczyzna",
+    "female": "Kobieta",
+    "shoe_size": "Rozmiar buta",
+    "which_music": "Jakiej muzyki sluchasz ?",
+    "classic_music": "Muzyka klasyczna",
+    "additiona_comment": "Dodatkowy komentarz",
+    "comment": "Komentarz",
+    "submit": "Zatwierdź"
+  },
   "common": {
     "add": "Dodaj",
     "back": "Cofnij",

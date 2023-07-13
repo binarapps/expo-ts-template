@@ -122,6 +122,24 @@
     "sign_out": "Sign out!",
     "selected": " - selected"
   },
+  "test_form": {
+    "contact_data": "Contact data",
+    "name_placeholder": "Name",
+    "surname_placeholder": "Surname",
+    "email_placeholder": "E-mail",
+    "phone_placeholder": "Phone number",
+    "postalCode_placeholder": "Postal code",
+    "city_placeholder": "City",
+    "sex": "Sex",
+    "male": "Male",
+    "female": "Female",
+    "shoe_size": "Shoe size",
+    "which_music": "what kind of music do you listen ?",
+    "classic_music": "Classic music",
+    "additiona_comment": "Additional comment",
+    "comment": "Comment",
+    "submit": "Submit"
+  },
   "common": {
     "add": "Add",
     "back": "Back",
