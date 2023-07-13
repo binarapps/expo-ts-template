@@ -122,6 +122,17 @@
     "selected": " - wybrano"
   },
   "test_form": {
+    "interests": "Zainteresowania",
+    "cooking": "Gotowanie",
+    "sport": "Sport",
+    "games": "Gry",
+    "dancing": "Taniec",
+    "age": "Wiek",
+    "education": "Wykształcenie",
+    "primary": "Podstawowe",
+    "middle": "Gimnazjalne",
+    "secondary": "Zawodowe",
+    "postsecondary": "Wyzsze",
     "contact_data": "Dane kontaktowe",
     "name_placeholder": "Imie",
     "surname_placeholder": "Nazwisko",

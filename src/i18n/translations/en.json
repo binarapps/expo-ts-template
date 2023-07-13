@@ -123,6 +123,17 @@
     "selected": " - selected"
   },
   "test_form": {
+    "interests": "Interests",
+    "cooking": "Cooking",
+    "sport": "Sport",
+    "games": "Games",
+    "dancing": "Dancing",
+    "age": "Age",
+    "education": "Education",
+    "primary": "Primary",
+    "middle": "Middle",
+    "secondary": "Secondary",
+    "postsecondary": "Postsecondary",
     "contact_data": "Contact data",
     "name_placeholder": "Name",
     "surname_placeholder": "Surname",

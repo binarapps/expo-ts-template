@@ -16,6 +16,9 @@ const defaultValues: TestFormValues = {
   music: [],
   comment: '',
   shoeSize: '',
+  age: '',
+  education: '',
+  interests: [],
 }
 
 export const useTestForm = () => {

@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { ControlledField } from '~components'
-import { useState, useTestForm, useTranslation } from '~hooks'
+import { useTestForm, useTranslation } from '~hooks'
 
 const SHOE_SIZES = [
   '34',
@@ -22,11 +22,19 @@ const SHOE_SIZES = [
   '46',
   '47',
 ]
+const AGES = ['18-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81-90', '91-100']
+const MUSICS = ['Metal', 'Heavy Metal', 'Rock', 'Pop', 'Rap']
 
 export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
   const { control, errors, submit } = useTestForm()
-  const [sex, setSex] = useState<string>('')
+  const INTERESTS = [
+    'IT',
+    t('test_form.cooking'),
+    t('test_form.sport'),
+    t('test_form.games'),
+    t('test_form.dancing'),
+  ]
 
   return (
     <KeyboardAwareScrollView
@@ -39,6 +47,7 @@ export const TestFormScreen = (): JSX.Element => {
         {t('test_form.contact_data')}
       </Text>
       <ControlledField.Input
+        isRequired={true}
         control={control}
         errors={errors}
         placeholder={t('test_form.name_placeholder')}
@@ -86,16 +95,47 @@ export const TestFormScreen = (): JSX.Element => {
         mt={2}
       />
       <Text fontSize="xl" fontWeight="bold" py={2}>
+        {t('test_form.age')}
+      </Text>
+      <ControlledField.Radio control={control} errors={errors} name="age" radioOptions={AGES} />
+      <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.sex')}
       </Text>
       <ControlledField.Radio
         control={control}
         errors={errors}
         name="sex"
-        value={sex}
         radioOptions={[t('test_form.male'), t('test_form.female')]}
-        onChange={setSex}
       />
+      <Text fontSize="xl" fontWeight="bold" py={2}>
+        {t('test_form.education')}
+      </Text>
+      <FormControl>
+        <Controller
+          control={control}
+          name="shoeSize"
+          render={({ field }) => (
+            <Select
+              selectedValue={field.value}
+              placeholder={t('test_form.education')}
+              mt={1}
+              _selectedItem={{
+                bg: 'primary.100',
+              }}
+              onValueChange={(itemValue) => field.onChange(itemValue)}
+            >
+              {[
+                t('test_form.primary'),
+                t('test_form.middle'),
+                t('test_form.secondary'),
+                t('test_form.postsecondary'),
+              ].map((education) => (
+                <Select.Item key={education} label={education} value={education} />
+              ))}
+            </Select>
+          )}
+        />
+      </FormControl>
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.shoe_size')}
       </Text>
@@ -129,24 +169,29 @@ export const TestFormScreen = (): JSX.Element => {
           name="music"
           render={({ field }) => (
             <Checkbox.Group value={field.value} onChange={(value) => field.onChange(value)}>
-              <Checkbox value="Rock">
-                <Text>Rock</Text>
-              </Checkbox>
-              <Checkbox value="Metal">
-                <Text>Metal</Text>
-              </Checkbox>
-              <Checkbox value="Pop">
-                <Text>Pop</Text>
-              </Checkbox>
-              <Checkbox value="Rap">
-                <Text>Rap</Text>
-              </Checkbox>
-              <Checkbox value="Techno">
-                <Text>Techno</Text>
-              </Checkbox>
-              <Checkbox value="Classic">
-                <Text>{t('test_form.classic_music')}</Text>
-              </Checkbox>
+              {MUSICS.map((music) => (
+                <Checkbox key={music} value={music}>
+                  <Text>{music}</Text>
+                </Checkbox>
+              ))}
+            </Checkbox.Group>
+          )}
+        />
+      </FormControl>
+      <Text fontSize="xl" fontWeight="bold" py={2}>
+        {t('test_form.interests')}
+      </Text>
+      <FormControl>
+        <Controller
+          control={control}
+          name="interests"
+          render={({ field }) => (
+            <Checkbox.Group value={field.value} onChange={(value) => field.onChange(value)}>
+              {INTERESTS.map((music) => (
+                <Checkbox key={music} value={music}>
+                  <Text>{music}</Text>
+                </Checkbox>
+              ))}
             </Checkbox.Group>
           )}
         />

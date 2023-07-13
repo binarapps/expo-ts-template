@@ -9,4 +9,7 @@ export type TestFormValues = {
   music: string[]
   comment: string
   shoeSize: string
+  age: string
+  education: string
+  interests: string[]
 }
