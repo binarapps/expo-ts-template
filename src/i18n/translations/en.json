@@ -149,7 +149,23 @@
     "classic_music": "Classic music",
     "additiona_comment": "Additional comment",
     "comment": "Comment",
-    "submit": "Submit"
+    "submit": "Submit",
+    "errors": {
+      "name": "Name is required",
+      "surname": "Surname is required",
+      "email": "Email is required",
+      "city": "City is required",
+      "postalCode": "Postal code is required",
+      "postalCode_format": "Postal code must be in form 00-000",
+      "phone": "Phone is required",
+      "phone_format": "Phone number must be in form 000-000-000",
+      "age": "Age is required",
+      "sex": "Sex is is required",
+      "education": "Education is required",
+      "shoeSize": "Shoe size is required",
+      "music": "Atleast 1 music is needed",
+      "interests": "Atleast 1 interest is needed"
+    }
   },
   "common": {
     "add": "Add",

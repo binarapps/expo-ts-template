@@ -27,7 +27,7 @@ const MUSICS = ['Metal', 'Heavy Metal', 'Rock', 'Pop', 'Rap']
 
 export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
-  const { control, errors, submit } = useTestForm()
+  const { control, errors, submit, register, VALIDATION } = useTestForm()
   const INTERESTS = [
     'IT',
     t('test_form.cooking'),
@@ -47,6 +47,7 @@ export const TestFormScreen = (): JSX.Element => {
         {t('test_form.contact_data')}
       </Text>
       <ControlledField.Input
+        {...register('name', VALIDATION.name)}
         isRequired={true}
         control={control}
         errors={errors}
@@ -55,6 +56,7 @@ export const TestFormScreen = (): JSX.Element => {
         returnKeyType="next"
       />
       <ControlledField.Input
+        {...register('surname', VALIDATION.surname)}
         control={control}
         errors={errors}
         placeholder={t('test_form.surname_placeholder')}
@@ -63,6 +65,7 @@ export const TestFormScreen = (): JSX.Element => {
         mt={2}
       />
       <ControlledField.Input
+        {...register('email', VALIDATION.email)}
         control={control}
         errors={errors}
         placeholder={t('test_form.email_placeholder')}
@@ -71,6 +74,7 @@ export const TestFormScreen = (): JSX.Element => {
         mt={2}
       />
       <ControlledField.Input
+        {...register('phone', VALIDATION.phone)}
         control={control}
         errors={errors}
         placeholder={t('test_form.phone_placeholder')}
@@ -79,6 +83,7 @@ export const TestFormScreen = (): JSX.Element => {
         mt={2}
       />
       <ControlledField.Input
+        {...register('postalCode', VALIDATION.postalCode)}
         control={control}
         errors={errors}
         placeholder={t('test_form.postalCode_placeholder')}
@@ -87,6 +92,7 @@ export const TestFormScreen = (): JSX.Element => {
         mt={2}
       />
       <ControlledField.Input
+        {...register('city', VALIDATION.city)}
         control={control}
         errors={errors}
         placeholder={t('test_form.city_placeholder')}
@@ -97,11 +103,20 @@ export const TestFormScreen = (): JSX.Element => {
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.age')}
       </Text>
-      <ControlledField.Radio control={control} errors={errors} name="age" radioOptions={AGES} />
+      <ControlledField.Radio
+        errorMessage={VALIDATION.age.required}
+        isRequired
+        control={control}
+        errors={errors}
+        name="age"
+        radioOptions={AGES}
+      />
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.sex')}
       </Text>
       <ControlledField.Radio
+        errorMessage={VALIDATION.sex.required}
+        isRequired
         control={control}
         errors={errors}
         name="sex"
@@ -110,10 +125,11 @@ export const TestFormScreen = (): JSX.Element => {
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.education')}
       </Text>
-      <FormControl>
+      <FormControl isRequired isInvalid={'education' in errors}>
         <Controller
+          rules={VALIDATION.education}
           control={control}
-          name="shoeSize"
+          name="education"
           render={({ field }) => (
             <Select
               selectedValue={field.value}
@@ -135,14 +151,16 @@ export const TestFormScreen = (): JSX.Element => {
             </Select>
           )}
         />
+        <FormControl.ErrorMessage>{errors.education?.message}</FormControl.ErrorMessage>
       </FormControl>
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.shoe_size')}
       </Text>
-      <FormControl>
+      <FormControl isRequired isInvalid={'shoeSize' in errors}>
         <Controller
           control={control}
           name="shoeSize"
+          rules={VALIDATION.shoeSize}
           render={({ field }) => (
             <Select
               selectedValue={field.value}
@@ -159,13 +177,15 @@ export const TestFormScreen = (): JSX.Element => {
             </Select>
           )}
         />
+        <FormControl.ErrorMessage>{errors.shoeSize?.message}</FormControl.ErrorMessage>
       </FormControl>
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.which_music')}
       </Text>
-      <FormControl>
+      <FormControl isRequired isInvalid={'music' in errors}>
         <Controller
           control={control}
+          rules={VALIDATION.music}
           name="music"
           render={({ field }) => (
             <Checkbox.Group value={field.value} onChange={(value) => field.onChange(value)}>
@@ -177,24 +197,27 @@ export const TestFormScreen = (): JSX.Element => {
             </Checkbox.Group>
           )}
         />
+        <FormControl.ErrorMessage>{errors.music?.message}</FormControl.ErrorMessage>
       </FormControl>
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.interests')}
       </Text>
-      <FormControl>
+      <FormControl isRequired isInvalid={'interests' in errors}>
         <Controller
           control={control}
+          rules={VALIDATION.interests}
           name="interests"
           render={({ field }) => (
             <Checkbox.Group value={field.value} onChange={(value) => field.onChange(value)}>
-              {INTERESTS.map((music) => (
-                <Checkbox key={music} value={music}>
-                  <Text>{music}</Text>
+              {INTERESTS.map((interest) => (
+                <Checkbox key={interest} value={interest}>
+                  <Text>{interest}</Text>
                 </Checkbox>
               ))}
             </Checkbox.Group>
           )}
         />
+        <FormControl.ErrorMessage>{errors.interests?.message}</FormControl.ErrorMessage>
       </FormControl>
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.additiona_comment')}

@@ -26,8 +26,38 @@ export const useTestForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { t } = useTranslation()
 
+  const VALIDATION = {
+    name: { required: t('test_form.errors.name') },
+    surname: { required: t('test_form.errors.surname') },
+    email: { required: t('test_form.errors.email') },
+    phone: {
+      required: t('test_form.errors.phone'),
+      pattern: {
+        value: /[0-9]{3}-[0-9]{3}-[0-9]{3}/,
+        message: t('test_form.errors.phone_format'),
+      },
+    },
+    postalCode: {
+      required: t('test_form.errors.postalCode'),
+      pattern: {
+        value: /[0-9]{2}-[0-9]{3}/,
+        message: t('test_form.errors.postalCode_format'),
+      },
+    },
+    city: {
+      required: t('test_form.errors.city'),
+    },
+    shoeSize: { required: t('test_form.errors.shoeSize') },
+    age: { required: t('test_form.errors.age') },
+    education: { required: t('test_form.errors.education') },
+    music: { required: t('test_form.errors.music') },
+    interests: { required: t('test_form.errors.interests') },
+    sex: { required: t('test_form.errors.sex') },
+  }
+
   const {
     control,
+    register,
     formState: { errors },
     setFocus,
     handleSubmit,
@@ -42,6 +72,7 @@ export const useTestForm = () => {
       setError('')
       console.log(data)
     } catch (e) {
+      console.log(e)
       if (isError(e)) {
         setError(e.message)
       } else {
@@ -53,7 +84,9 @@ export const useTestForm = () => {
   }
 
   return {
+    VALIDATION,
     submit: handleSubmit(onSubmit),
+    register,
     isSubmitting,
     setIsSubmitting,
     setFocus,

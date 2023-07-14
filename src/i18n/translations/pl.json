@@ -148,7 +148,23 @@
     "classic_music": "Muzyka klasyczna",
     "additiona_comment": "Dodatkowy komentarz",
     "comment": "Komentarz",
-    "submit": "Zatwierdź"
+    "submit": "Zatwierdź",
+    "errors": {
+      "name": "Imie jest wymagane",
+      "surname": "Nazwisko jest wymagane",
+      "email": "Email jest wymagany",
+      "city": "Miasto jest wymagane",
+      "postalCode": "Kod pocztowy jest wymagany",
+      "postalCode_format": "Kod pocztowy musi byc w formacie 00-000",
+      "phone": "Number telefonu jest wymagany",
+      "phone_format": "Numer telefonu musi byc w formacie 000-000-000",
+      "age": "Wiek jest wymagany",
+      "sex": "Płeć jest wymagana",
+      "education": "Wykształcenie jest wymagane",
+      "shoeSize": "Rozmiar buta jest wymagany",
+      "music": "Zaznacz przynajmniej 1 rodzaj muzyki",
+      "interests": "Zaznacz przynajmniej 1 zainteresowanie"
+    }
   },
   "common": {
     "add": "Dodaj",
