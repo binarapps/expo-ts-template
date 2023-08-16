@@ -1,9 +1,8 @@
 import { Button, TextArea, Checkbox, FormControl, Text, Select } from 'native-base'
 import { Controller } from 'react-hook-form'
 import { StyleSheet } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-import { ControlledField } from '~components'
+import { ControlledField, KeyboardAwareScrollView } from '~components'
 import { useTestForm, useTranslation } from '~hooks'
 
 const SHOE_SIZES = [
@@ -27,7 +26,7 @@ const MUSICS = ['Metal', 'Heavy Metal', 'Rock', 'Pop', 'Rap']
 
 export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
-  const { control, errors, submit, register, VALIDATION } = useTestForm()
+  const { control, errors, submit, VALIDATION } = useTestForm()
   const INTERESTS = [
     'IT',
     t('test_form.cooking'),
@@ -37,17 +36,11 @@ export const TestFormScreen = (): JSX.Element => {
   ]
 
   return (
-    <KeyboardAwareScrollView
-      contentContainerStyle={style.scrollViewContainer}
-      enableOnAndroid
-      extraHeight={100}
-      keyboardShouldPersistTaps="handled"
-    >
+    <KeyboardAwareScrollView>
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.contact_data')}
       </Text>
       <ControlledField.Input
-        {...register('name', VALIDATION.name)}
         isRequired={true}
         control={control}
         errors={errors}
@@ -56,7 +49,6 @@ export const TestFormScreen = (): JSX.Element => {
         returnKeyType="next"
       />
       <ControlledField.Input
-        {...register('surname', VALIDATION.surname)}
         control={control}
         errors={errors}
         placeholder={t('test_form.surname_placeholder')}
@@ -65,7 +57,6 @@ export const TestFormScreen = (): JSX.Element => {
         mt={2}
       />
       <ControlledField.Input
-        {...register('email', VALIDATION.email)}
         control={control}
         errors={errors}
         placeholder={t('test_form.email_placeholder')}
@@ -74,7 +65,6 @@ export const TestFormScreen = (): JSX.Element => {
         mt={2}
       />
       <ControlledField.Input
-        {...register('phone', VALIDATION.phone)}
         control={control}
         errors={errors}
         placeholder={t('test_form.phone_placeholder')}
@@ -83,7 +73,6 @@ export const TestFormScreen = (): JSX.Element => {
         mt={2}
       />
       <ControlledField.Input
-        {...register('postalCode', VALIDATION.postalCode)}
         control={control}
         errors={errors}
         placeholder={t('test_form.postalCode_placeholder')}
@@ -92,7 +81,6 @@ export const TestFormScreen = (): JSX.Element => {
         mt={2}
       />
       <ControlledField.Input
-        {...register('city', VALIDATION.city)}
         control={control}
         errors={errors}
         placeholder={t('test_form.city_placeholder')}
@@ -138,7 +126,7 @@ export const TestFormScreen = (): JSX.Element => {
               _selectedItem={{
                 bg: 'primary.100',
               }}
-              onValueChange={(itemValue) => field.onChange(itemValue)}
+              onValueChange={field.onChange}
             >
               {[
                 t('test_form.primary'),
@@ -169,7 +157,7 @@ export const TestFormScreen = (): JSX.Element => {
               _selectedItem={{
                 bg: 'primary.100',
               }}
-              onValueChange={(itemValue) => field.onChange(itemValue)}
+              onValueChange={field.onChange}
             >
               {SHOE_SIZES.map((size) => (
                 <Select.Item key={size} label={size} value={size} />
