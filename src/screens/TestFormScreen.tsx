@@ -1,6 +1,5 @@
 import { Button, TextArea, Checkbox, FormControl, Text, Select } from 'native-base'
 import { Controller } from 'react-hook-form'
-import { StyleSheet } from 'react-native'
 
 import { ControlledField, KeyboardAwareScrollView } from '~components'
 import { useTestForm, useTranslation } from '~hooks'
@@ -230,7 +229,3 @@ export const TestFormScreen = (): JSX.Element => {
     </KeyboardAwareScrollView>
   )
 }
-
-const style = StyleSheet.create({
-  scrollViewContainer: { paddingHorizontal: 24 },
-})
