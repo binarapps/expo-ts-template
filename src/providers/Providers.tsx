@@ -22,24 +22,24 @@ export const Providers = ({ children }: { children: ReactNode }): JSX.Element =>
 
   return (
     // NativeBaseProvider includes SafeAreaProvider so that we don't have to include it in a root render tree
-    <NativeBaseProvider theme={theme} config={nativeBaseConfig}>
-      <ExpoNotificationsProvider>
-        {/* @ts-expect-error: error comes from a react-native-notificated library which doesn't have declared children in types required in react 18 */}
-        <NotificationsProvider>
-          <QueryClientProvider client={queryClient}>
-            <AuthProvider>
-              <AppLoading>
-                <ColorSchemeProvider>
-                  <GestureHandlerRootView style={styles.gestureHandlerRootView}>
+    <GestureHandlerRootView style={styles.gestureHandlerRootView}>
+      <NativeBaseProvider theme={theme} config={nativeBaseConfig}>
+        <ExpoNotificationsProvider>
+          {/* @ts-expect-error: error comes from a react-native-notificated library which doesn't have declared children in types required in react 18 */}
+          <NotificationsProvider>
+            <QueryClientProvider client={queryClient}>
+              <AuthProvider>
+                <AppLoading>
+                  <ColorSchemeProvider>
                     <BottomSheetModalProvider>{children}</BottomSheetModalProvider>
-                  </GestureHandlerRootView>
-                </ColorSchemeProvider>
-              </AppLoading>
-            </AuthProvider>
-          </QueryClientProvider>
-        </NotificationsProvider>
-      </ExpoNotificationsProvider>
-    </NativeBaseProvider>
+                  </ColorSchemeProvider>
+                </AppLoading>
+              </AuthProvider>
+            </QueryClientProvider>
+          </NotificationsProvider>
+        </ExpoNotificationsProvider>
+      </NativeBaseProvider>
+    </GestureHandlerRootView>
   )
 }
 
