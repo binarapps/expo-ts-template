@@ -6,6 +6,7 @@ import { Input as BaseInput } from '../../atoms/Input'
 import type { FieldInputProps } from './types'
 
 import { useMemo } from '~hooks'
+import { FormLabel } from '~components/atoms'
 
 const layoutPropsKeys = [
   'm',
@@ -45,6 +46,7 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
       errorMessage,
       onFocus,
       onBlur,
+      labelStyle,
       ...props
     },
     ref
@@ -90,12 +92,7 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
     return (
       <Box {...layoutProps} width="100%" mb="2">
         <Pressable onPress={() => handleFocus()}>
-          {label && (
-            <Text color="gray.600" mb="1">
-              {label}
-              {isRequired && <Text color="error.600">*</Text>}
-            </Text>
-          )}
+          <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
           <BaseInput
             isRequired={isRequired}
             isInvalid={isInvalid || Boolean(errorMessage)}

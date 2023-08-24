@@ -1,8 +1,14 @@
 import { IBoxProps, Theme, IInputProps } from 'native-base'
-import { ViewStyle } from 'react-native'
+import { TextStyle, ViewStyle } from 'react-native'
 
 import { IconNames } from '~types/icon'
 import { ColorNames } from '~types/native-base'
+
+export type FormLabelProps = {
+  label?: string
+  isRequired?: boolean
+  labelStyle?: TextStyle
+}
 
 export type AbsoluteProps = Omit<IBoxProps, 'position'>
 
@@ -17,4 +23,32 @@ export type InputProps = IInputProps & {
   secureTextIconName?: IconNames
   secureTextIconColor?: ColorNames
   secureTextIconSize?: number
+}
+
+export type SelectKey = string | number
+
+export type SelectItemProps<T> = {
+  label: string
+  labelInDropdown?: string
+  value: T
+}
+
+export type SelectProps<T> = {
+  placeholder?: string
+  label?: string
+  disabled?: boolean
+  items: SelectItemProps<T>[]
+  value: T[]
+  setValue: (newValue: T[]) => void
+  maxSelectedItems?: number
+  isError?: boolean
+  onOpen?: () => void
+}
+
+export type RadioProps = {
+  onChange: (val: string) => void
+  label?: string
+  radioOptions?: string[]
+  isError?: boolean
+  value?: string | number
 }

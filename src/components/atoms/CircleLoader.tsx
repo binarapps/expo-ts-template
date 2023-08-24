@@ -6,7 +6,7 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated'
 
-import { Box } from '~components/atoms'
+import { Box } from 'native-base'
 import { useCircleLoader } from '~hooks/loaders'
 
 type HalfCircleProps = {

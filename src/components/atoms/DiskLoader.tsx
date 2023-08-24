@@ -10,7 +10,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated'
 
-import { Box } from '~components/atoms'
+import { Box } from 'native-base'
 
 export type DiskLoaderType = {
   circleColor?: string

@@ -1,7 +1,7 @@
 import React from 'react'
 import Animated from 'react-native-reanimated'
 
-import { Box } from '~components/atoms'
+import { Box } from 'native-base'
 import { useBubblesLoader } from '~hooks/loaders'
 
 export type BubblesLoaderType = {
