@@ -1,5 +1,5 @@
 import type { AbsoluteProps } from './types'
 
-import { Box } from '~components/atoms'
+import { Box } from 'native-base'
 
 export const Absolute = (props: AbsoluteProps) => <Box {...props} position="absolute" />

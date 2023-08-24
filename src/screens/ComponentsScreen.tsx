@@ -56,7 +56,7 @@ export const ComponentsScreen = (): JSX.Element => {
       <Box alignItems="center">
         <Text mb={4}>{t('components_screen.typography.label')}</Text>
         {headingSizes.map((size) => (
-          <Text key={size} size={size}>
+          <Text key={size} fontSize={size}>
             {t(`components_screen.typography.${size}`)}
           </Text>
         ))}
@@ -76,7 +76,7 @@ export const ComponentsScreen = (): JSX.Element => {
         <Text mb={4}>{t('components_screen.loader_variants.header')}</Text>
         {loaderVariants?.map((loader) => (
           <Box flex={1} key={loader.type}>
-            <Text mb={4} size="sm">
+            <Text mb={4} fontSize="sm">
               {t(loader?.headerText)}
             </Text>
             <Loader type={loader?.type} />

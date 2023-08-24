@@ -1,12 +1,12 @@
-import { TextArea, Checkbox, FormControl, Select } from 'native-base'
+import { TextArea, Checkbox, FormControl } from 'native-base'
 import { Controller } from 'react-hook-form'
 import { StyleSheet } from 'react-native'
 
 import { ControlledField, KeyboardAwareScrollView } from '~components'
 import { Button, Text } from '~components/atoms'
-import { useTestForm, useTranslation } from '~hooks'
+import { useMemo, useState, useTestForm, useTranslation } from '~hooks'
 
-const SHOE_SIZES = [
+const shoeSizes = [
   '34',
   '35',
   '36',
@@ -28,6 +28,11 @@ const MUSICS = ['Metal', 'Heavy Metal', 'Rock', 'Pop', 'Rap']
 export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
   const { control, errors, submit, VALIDATION } = useTestForm()
+  const [chosenAge, setChosenAge] = useState<string>('')
+  const [chosenGender, setChosenGender] = useState<string>('')
+  const [chosenEducation, setChosenEducation] = useState('')
+  const [chosenShoeSize, setChosenShozeSize] = useState('')
+
   const INTERESTS = [
     'IT',
     t('test_form.cooking'),
@@ -35,6 +40,33 @@ export const TestFormScreen = (): JSX.Element => {
     t('test_form.games'),
     t('test_form.dancing'),
   ]
+
+  const translatedEducation = [
+    t('test_form.primary'),
+    t('test_form.middle'),
+    t('test_form.secondary'),
+    t('test_form.postsecondary'),
+  ]
+
+  const education = useMemo(
+    () =>
+      translatedEducation?.map((item) => ({
+        value: item,
+        label: item,
+        labelInDropdown: item,
+      })),
+    [translatedEducation]
+  )
+
+  const mappedShoeSizes = useMemo(
+    () =>
+      shoeSizes?.map((item) => ({
+        value: item,
+        label: item,
+        labelInDropdown: item,
+      })),
+    []
+  )
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container}>
@@ -89,85 +121,60 @@ export const TestFormScreen = (): JSX.Element => {
         returnKeyType="next"
         mt={2}
       />
-      <Text fontSize="xl" fontWeight="bold" py={2}>
-        {t('test_form.age')}
-      </Text>
       <ControlledField.Radio
-        errorMessage={VALIDATION.age.required}
         isRequired
         control={control}
         errors={errors}
         name="age"
         radioOptions={AGES}
+        value={chosenAge}
+        onChange={(val) => {
+          setChosenAge(val)
+        }}
+        rules={VALIDATION.age}
+        label={t('test_form.age')}
       />
-      <Text fontSize="xl" fontWeight="bold" py={2}>
-        {t('test_form.sex')}
-      </Text>
       <ControlledField.Radio
-        errorMessage={VALIDATION.sex.required}
         isRequired
         control={control}
         errors={errors}
         name="sex"
+        value={chosenGender}
         radioOptions={[t('test_form.male'), t('test_form.female')]}
+        onChange={(val) => {
+          setChosenGender(val)
+        }}
+        rules={VALIDATION.sex}
+        label={t('test_form.sex')}
       />
-      <Text fontSize="xl" fontWeight="bold" py={2}>
-        {t('test_form.education')}
-      </Text>
-      <FormControl isRequired isInvalid={'education' in errors}>
-        <Controller
-          rules={VALIDATION.education}
-          control={control}
-          name="education"
-          render={({ field }) => (
-            <Select
-              selectedValue={field.value}
-              placeholder={t('test_form.education')}
-              mt={1}
-              _selectedItem={{
-                bg: 'primary.100',
-              }}
-              onValueChange={field.onChange}
-            >
-              {[
-                t('test_form.primary'),
-                t('test_form.middle'),
-                t('test_form.secondary'),
-                t('test_form.postsecondary'),
-              ].map((education) => (
-                <Select.Item key={education} label={education} value={education} />
-              ))}
-            </Select>
-          )}
-        />
-        <FormControl.ErrorMessage>{errors.education?.message}</FormControl.ErrorMessage>
-      </FormControl>
-      <Text fontSize="xl" fontWeight="bold" py={2}>
-        {t('test_form.shoe_size')}
-      </Text>
-      <FormControl isRequired isInvalid={'shoeSize' in errors}>
-        <Controller
-          control={control}
-          name="shoeSize"
-          rules={VALIDATION.shoeSize}
-          render={({ field }) => (
-            <Select
-              selectedValue={field.value}
-              placeholder={t('test_form.shoe_size')}
-              mt={1}
-              _selectedItem={{
-                bg: 'primary.100',
-              }}
-              onValueChange={field.onChange}
-            >
-              {SHOE_SIZES.map((size) => (
-                <Select.Item key={size} label={size} value={size} />
-              ))}
-            </Select>
-          )}
-        />
-        <FormControl.ErrorMessage>{errors.shoeSize?.message}</FormControl.ErrorMessage>
-      </FormControl>
+      <ControlledField.Select
+        label={t('test_form.education')}
+        items={education}
+        value={chosenEducation}
+        setValue={(newValue) => {
+          setChosenEducation(newValue)
+        }}
+        control={control}
+        name="education"
+        errors={errors}
+        placeholder={t('test_form.education')}
+        isRequired
+        rules={VALIDATION.education}
+      />
+      <ControlledField.Select
+        items={mappedShoeSizes}
+        value={chosenShoeSize}
+        setValue={(newValue) => {
+          setChosenShozeSize(newValue)
+        }}
+        control={control}
+        name="shoeSize"
+        errors={errors}
+        placeholder={t('test_form.shoe_size')}
+        rules={VALIDATION.shoeSize}
+        isRequired
+        label={t('test_form.shoe_size')}
+      />
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.which_music')}
       </Text>
