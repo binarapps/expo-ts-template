@@ -15,7 +15,7 @@ import {
   FieldSelectProps,
 } from '~components/molecules'
 
-export type ControlledCheckboxProps = FieldCheckboxProps & {
+export type ControlledCheckboxProps = Omit<FieldCheckboxProps, 'onChange' | 'value'> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/
@@ -41,7 +41,7 @@ export interface RenderInputProps {
   field: ControllerRenderProps<FieldValues, string>
 }
 
-export type ControlledRadioProps = FieldRadioProps & {
+export type ControlledRadioProps = Omit<FieldRadioProps, 'onChange' | 'value'> & {
   // TODO: Think how to change this to proper type
   // Could be helpful when solving
   // - https://fettblog.eu/typescript-react-generic-forward-refs/

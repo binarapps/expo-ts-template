@@ -1,12 +1,11 @@
-import { Box, Text } from 'native-base'
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
+import { Box } from 'native-base'
+import { forwardRef, useCallback, useImperativeHandle, useRef, useMemo } from 'react'
 import { NativeSyntheticEvent, Pressable, TextInput, TextInputFocusEventData } from 'react-native'
 
 import { Input as BaseInput } from '../../atoms/Input'
 import type { FieldInputProps } from './types'
 
-import { useMemo } from '~hooks'
-import { FormLabel } from '~components/atoms'
+import { FormErrorMessage, FormLabel } from '~components/atoms'
 
 const layoutPropsKeys = [
   'm',
@@ -99,11 +98,7 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
             {...inputProps}
             ref={_inputRef}
           />
-          {errorMessage && (
-            <Text mt="1" color="error.600">
-              {errorMessage}
-            </Text>
-          )}
+          <FormErrorMessage errorMessage={errorMessage} />
         </Pressable>
       </Box>
     )

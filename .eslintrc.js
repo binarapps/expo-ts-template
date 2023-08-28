@@ -35,6 +35,7 @@ module.exports = {
     'react/prop-types': 'off',
 
     'react-native/no-single-element-style-arrays': 'off',
+    'react-native/no-color-literals': 'off',
     'react-native/no-raw-text': [
       2,
       {

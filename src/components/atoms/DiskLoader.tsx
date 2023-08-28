@@ -1,3 +1,4 @@
+import { Box } from 'native-base'
 import React, { useEffect } from 'react'
 import Animated, {
   Easing,
@@ -9,8 +10,6 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated'
-
-import { Box } from 'native-base'
 
 export type DiskLoaderType = {
   circleColor?: string

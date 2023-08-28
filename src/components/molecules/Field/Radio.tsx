@@ -1,28 +1,19 @@
 import { Box, Pressable, Text } from 'native-base'
-import { forwardRef, useMemo } from 'react'
+import { forwardRef, useCallback, useMemo } from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { FieldRadioProps } from './types'
-import { FormLabel } from '~components/atoms'
 
-export const Radio = forwardRef<{}, FieldRadioProps>(
+import { FormErrorMessage, FormLabel } from '~components/atoms'
+
+export const Radio = forwardRef<any, FieldRadioProps>(
   (
-    {
-      isInvalid,
-      isRequired,
-      isDisabled,
-      value,
-      radioOptions,
-      name,
-      errorMessage,
-      isError,
-      onChange,
-      label,
-      labelStyle,
-    },
+    { isRequired, value, radioOptions, errorMessage, isError, onChange, label, labelStyle },
     ref
   ) => {
-    //TODO: prepare for dark mode
+    const borderColor = useMemo(() => (isError ? 'red' : 'black'), [isError])
+    const bgColor = useCallback((item: string) => (item === value ? 'blue' : 'gray'), [value])
+
     const renderRadioButtons = useMemo(
       () =>
         radioOptions?.map((item: string, index: number) => {
@@ -32,56 +23,53 @@ export const Radio = forwardRef<{}, FieldRadioProps>(
                 style={[
                   styles.circleOut,
                   {
-                    borderColor: isError ? 'red' : 'black',
+                    borderColor,
                   },
                 ]}
               >
                 {item === value ? (
-                  <View
-                    style={[styles.circleIn, { backgroundColor: item === value ? 'blue' : 'gray' }]}
-                  />
+                  <View style={[styles.circleIn, { backgroundColor: bgColor(item) }]} />
                 ) : null}
               </View>
-              <Text style={{ marginLeft: 8 }}>{item}</Text>
+              <Text style={styles.text}>{item}</Text>
             </Pressable>
           )
         }),
-      [isInvalid, radioOptions, value, isError]
+      [radioOptions, value, bgColor, borderColor, onChange, ref]
     )
 
     return (
       <Box width="100%" mb="2">
         <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
         {renderRadioButtons}
-        {errorMessage && (
-          <Text mt="1" color="error.600">
-            {errorMessage}
-          </Text>
-        )}
+        <FormErrorMessage errorMessage={errorMessage} />
       </Box>
     )
   }
 )
 
 const styles = StyleSheet.create({
-  wrapper: {
-    width: '100%',
-    flex: 1,
-    height: 40,
-    alignItems: 'center',
-    flexDirection: 'row',
+  circleIn: {
+    borderRadius: 50,
+    height: 14,
+    width: 14,
   },
   circleOut: {
-    width: 22,
-    height: 22,
-    justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50,
     borderWidth: 1,
+    height: 22,
+    justifyContent: 'center',
+    width: 22,
   },
-  circleIn: {
-    width: 14,
-    height: 14,
-    borderRadius: 50,
+  text: {
+    marginLeft: 8,
+  },
+  wrapper: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    height: 40,
+    width: '100%',
   },
 })

@@ -1,5 +1,5 @@
 import { IBoxProps, Theme, IInputProps } from 'native-base'
-import { TextStyle, ViewStyle } from 'react-native'
+import { TextStyle, ViewProps, ViewStyle } from 'react-native'
 
 import { IconNames } from '~types/icon'
 import { ColorNames } from '~types/native-base'
@@ -51,4 +51,16 @@ export type RadioProps = {
   radioOptions?: string[]
   isError?: boolean
   value?: string | number
+}
+
+export type CheckboxProps = ViewProps & {
+  value: boolean | string[]
+  onChange: any
+  checkboxText?: string
+  disabled?: boolean
+  size?: number
+  isError?: boolean
+  checkboxTextColor?: string
+  isChecked?: boolean
+  checkboxes?: string[]
 }
