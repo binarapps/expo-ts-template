@@ -3,6 +3,7 @@ import { Controller, get, ControllerProps } from 'react-hook-form'
 
 import { Field } from '../../molecules'
 import type { ControlledSelectProps } from './types'
+
 import { SelectKey } from '~components/atoms'
 
 export const Select = <T extends SelectKey>({
@@ -24,11 +25,13 @@ export const Select = <T extends SelectKey>({
           onChange(newValue)
         }
       }
+      const properValue = Array.isArray(value) ? value : [value]
+
       return (
         <Field.Select
           errorMessage={errorMessage}
           isError={!!errorMessage}
-          value={Array.isArray(value) ? value : [value]}
+          value={properValue}
           setValue={handleChange}
           isRequired={isRequired}
           {...props}

@@ -5,11 +5,11 @@ import {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
 } from '@gorhom/bottom-sheet'
+import { Box, Row } from 'native-base'
 import { useCallback, useMemo, useRef } from 'react'
 import { Keyboard, Pressable, StyleSheet, Text, Dimensions } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-import { Box, Row } from 'native-base'
 import { Icon } from './Icon'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
 
@@ -40,7 +40,7 @@ const SelectItem = <T extends SelectKey>({
       closeDropdown()
       return
     }
-    const newValue = [...value]
+    const newValue = [...value].filter((el) => el)
     if (value?.includes(item.value)) {
       const index = newValue.indexOf(item.value)
       newValue.splice(index, 1)
@@ -53,9 +53,11 @@ const SelectItem = <T extends SelectKey>({
     }
   }, [closeDropdown, item.value, maxSelectedItems, setValue, value])
 
+  const color = useMemo(() => (disabled && !selected ? 'gray' : 'black'), [disabled, selected])
+
   return (
     <Box key={item.value}>
-      <TouchableOpacity style={{ padding: 8 }} onPress={onItemSelect}>
+      <TouchableOpacity style={styles.itemWrapper} onPress={onItemSelect}>
         {maxSelectedItems === 1 ? (
           <Row my={2} flex={1} alignItems="center">
             <Text>{item.labelInDropdown ?? item.label}</Text>
@@ -66,7 +68,7 @@ const SelectItem = <T extends SelectKey>({
             <Box
               borderRadius={5}
               hitSlop={{ top: 5, left: 15, bottom: 5 }}
-              borderColor={disabled && !selected ? 'gray.400' : 'black'}
+              borderColor={disabled && !selected ? 'gray' : 'black'}
               borderWidth={1}
               width={5}
               height={5}
@@ -74,12 +76,10 @@ const SelectItem = <T extends SelectKey>({
               justifyContent="center"
               alignItems="center"
             >
-              {selected ? <Icon color="gray400" name="check-fill" size={18} /> : null}
+              {selected ? <Icon color="gray" name="check-fill" size={18} /> : null}
             </Box>
             <Row flex={1} alignItems="center">
-              <Text style={{ color: disabled && !selected ? 'gray' : 'black' }}>
-                {item.labelInDropdown ?? item.label}
-              </Text>
+              <Text style={{ color }}>{item.labelInDropdown ?? item.label}</Text>
             </Row>
           </Row>
         ) : null}
@@ -87,16 +87,15 @@ const SelectItem = <T extends SelectKey>({
     </Box>
   )
 }
+
 export const Select = <T extends SelectKey>({
   placeholder,
-  // label,
   disabled: dropdownDisabled = false,
   items,
   value,
   setValue,
   maxSelectedItems = 1,
   onOpen,
-  // TODO add different styles for error
   isError = false,
 }: SelectProps<T>) => {
   const ref = useRef<BottomSheetModal>(null)
@@ -122,11 +121,11 @@ export const Select = <T extends SelectKey>({
   )
 
   const label = useMemo(() => {
-    if (value?.length === 0) {
+    let retVal = ''
+    const selectedItems = items?.filter((item) => value.includes(item.value)) ?? []
+    if (selectedItems?.length === 0) {
       return placeholder ?? ''
     }
-    let retVal = ''
-    const selectedItems = items.filter((item) => value?.includes(item.value)) ?? []
     for (const item of selectedItems) {
       retVal += `${item.label}, `
     }
@@ -168,16 +167,12 @@ export const Select = <T extends SelectKey>({
   )
 
   const inputColor = useMemo(() => {
-    return isError ? 'red' : dropdownDisabled ? 'grey' : 'black'
+    return isError ? 'red' : dropdownDisabled ? 'gray' : 'black'
   }, [dropdownDisabled, isError])
 
   return (
     <>
-      <Pressable
-        disabled={dropdownDisabled}
-        onPress={showDropdown}
-        style={{ justifyContent: 'center' }}
-      >
+      <Pressable disabled={dropdownDisabled} onPress={showDropdown} style={styles.mainWrapper}>
         <Text
           numberOfLines={1}
           style={[
@@ -188,12 +183,7 @@ export const Select = <T extends SelectKey>({
         >
           {label}
         </Text>
-        <Icon
-          color={inputColor}
-          size={22}
-          name="arrow-down-s-line"
-          style={{ position: 'absolute', right: 8 }}
-        />
+        <Icon color={inputColor} size={22} name="arrow-down-s-line" style={styles.icon} />
       </Pressable>
       <BottomSheetModal
         backdropComponent={renderBackdrop}
@@ -217,22 +207,31 @@ export const Select = <T extends SelectKey>({
 }
 
 const styles = StyleSheet.create({
-  // eslint-disable-next-line react-native/no-color-literals
-  textInput: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: 'white',
-    borderWidth: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 18,
-    fontSize: 16,
-    borderRadius: 8,
-    paddingRight: 28,
-  },
   errorBorder: {
     borderColor: 'red',
   },
+  icon: {
+    position: 'absolute',
+    right: 8,
+  },
+  itemWrapper: {
+    padding: 8,
+  },
+  mainWrapper: {
+    justifyContent: 'center',
+  },
   normalBorder: {
     borderColor: 'gray',
+  },
+  textInput: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 8,
+    borderWidth: 1,
+    flex: 1,
+    fontSize: 16,
+    paddingHorizontal: 10,
+    paddingRight: 28,
+    paddingVertical: 12,
   },
 })

@@ -1,12 +1,12 @@
+import { Box } from 'native-base'
 import React from 'react'
-import { Box, Text } from 'native-base'
 import { Pressable } from 'react-native'
 
 import { Select as CustomSelect } from '../../atoms/Select'
 import type { FieldSelectProps } from './types'
 
+import { FormErrorMessage, FormLabel, SelectKey } from '~components/atoms'
 import { useMemo } from '~hooks'
-import { FormLabel, SelectKey } from '~components/atoms'
 
 const layoutPropsKeys = [
   'm',
@@ -56,11 +56,7 @@ export const Select = <T extends SelectKey>({
       <Pressable>
         <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
         <CustomSelect {...props} />
-        {errorMessage && (
-          <Text mt="1" color="error.600">
-            {errorMessage}
-          </Text>
-        )}
+        <FormErrorMessage errorMessage={errorMessage} />
       </Pressable>
     </Box>
   )

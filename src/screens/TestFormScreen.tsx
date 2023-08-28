@@ -1,10 +1,10 @@
-import { TextArea, Checkbox, FormControl } from 'native-base'
+import { TextArea, FormControl } from 'native-base'
 import { Controller } from 'react-hook-form'
 import { StyleSheet } from 'react-native'
 
 import { ControlledField, KeyboardAwareScrollView } from '~components'
 import { Button, Text } from '~components/atoms'
-import { useMemo, useState, useTestForm, useTranslation } from '~hooks'
+import { useMemo, useTestForm, useTranslation } from '~hooks'
 
 const shoeSizes = [
   '34',
@@ -28,34 +28,31 @@ const MUSICS = ['Metal', 'Heavy Metal', 'Rock', 'Pop', 'Rap']
 export const TestFormScreen = (): JSX.Element => {
   const { t } = useTranslation()
   const { control, errors, submit, VALIDATION } = useTestForm()
-  const [chosenAge, setChosenAge] = useState<string>('')
-  const [chosenGender, setChosenGender] = useState<string>('')
-  const [chosenEducation, setChosenEducation] = useState('')
-  const [chosenShoeSize, setChosenShozeSize] = useState('')
 
-  const INTERESTS = [
-    'IT',
-    t('test_form.cooking'),
-    t('test_form.sport'),
-    t('test_form.games'),
-    t('test_form.dancing'),
-  ]
-
-  const translatedEducation = [
-    t('test_form.primary'),
-    t('test_form.middle'),
-    t('test_form.secondary'),
-    t('test_form.postsecondary'),
-  ]
+  const INTERESTS = useMemo(
+    () => [
+      'IT',
+      t('test_form.cooking'),
+      t('test_form.sport'),
+      t('test_form.games'),
+      t('test_form.dancing'),
+    ],
+    [t]
+  )
 
   const education = useMemo(
     () =>
-      translatedEducation?.map((item) => ({
+      [
+        t('test_form.primary'),
+        t('test_form.middle'),
+        t('test_form.secondary'),
+        t('test_form.postsecondary'),
+      ]?.map((item) => ({
         value: item,
         label: item,
         labelInDropdown: item,
       })),
-    [translatedEducation]
+    [t]
   )
 
   const mappedShoeSizes = useMemo(
@@ -127,10 +124,6 @@ export const TestFormScreen = (): JSX.Element => {
         errors={errors}
         name="age"
         radioOptions={AGES}
-        value={chosenAge}
-        onChange={(val) => {
-          setChosenAge(val)
-        }}
         rules={VALIDATION.age}
         label={t('test_form.age')}
       />
@@ -139,21 +132,13 @@ export const TestFormScreen = (): JSX.Element => {
         control={control}
         errors={errors}
         name="sex"
-        value={chosenGender}
         radioOptions={[t('test_form.male'), t('test_form.female')]}
-        onChange={(val) => {
-          setChosenGender(val)
-        }}
         rules={VALIDATION.sex}
         label={t('test_form.sex')}
       />
       <ControlledField.Select
         label={t('test_form.education')}
         items={education}
-        value={chosenEducation}
-        setValue={(newValue) => {
-          setChosenEducation(newValue)
-        }}
         control={control}
         name="education"
         errors={errors}
@@ -163,10 +148,6 @@ export const TestFormScreen = (): JSX.Element => {
       />
       <ControlledField.Select
         items={mappedShoeSizes}
-        value={chosenShoeSize}
-        setValue={(newValue) => {
-          setChosenShozeSize(newValue)
-        }}
         control={control}
         name="shoeSize"
         errors={errors}
@@ -175,46 +156,22 @@ export const TestFormScreen = (): JSX.Element => {
         isRequired
         label={t('test_form.shoe_size')}
       />
-      <Text fontSize="xl" fontWeight="bold" py={2}>
-        {t('test_form.which_music')}
-      </Text>
-      <FormControl isRequired isInvalid={'music' in errors}>
-        <Controller
-          control={control}
-          rules={VALIDATION.music}
-          name="music"
-          render={({ field }) => (
-            <Checkbox.Group value={field.value} onChange={(value) => field.onChange(value)}>
-              {MUSICS.map((music) => (
-                <Checkbox key={music} value={music}>
-                  <Text>{music}</Text>
-                </Checkbox>
-              ))}
-            </Checkbox.Group>
-          )}
-        />
-        <FormControl.ErrorMessage>{errors.music?.message}</FormControl.ErrorMessage>
-      </FormControl>
-      <Text fontSize="xl" fontWeight="bold" py={2}>
-        {t('test_form.interests')}
-      </Text>
-      <FormControl isRequired isInvalid={'interests' in errors}>
-        <Controller
-          control={control}
-          rules={VALIDATION.interests}
-          name="interests"
-          render={({ field }) => (
-            <Checkbox.Group value={field.value} onChange={(value) => field.onChange(value)}>
-              {INTERESTS.map((interest) => (
-                <Checkbox key={interest} value={interest}>
-                  <Text>{interest}</Text>
-                </Checkbox>
-              ))}
-            </Checkbox.Group>
-          )}
-        />
-        <FormControl.ErrorMessage>{errors.interests?.message}</FormControl.ErrorMessage>
-      </FormControl>
+      <ControlledField.Checkbox
+        checkboxes={MUSICS}
+        control={control}
+        errors={errors}
+        name="music"
+        rules={VALIDATION.music}
+        label={t('test_form.which_music')}
+      />
+      <ControlledField.Checkbox
+        control={control}
+        errors={errors}
+        name="interests"
+        checkboxes={INTERESTS}
+        rules={VALIDATION.interests}
+        label={t('test_form.interests')}
+      />
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.additiona_comment')}
       </Text>

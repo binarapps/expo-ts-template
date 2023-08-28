@@ -4,8 +4,8 @@ import { Controller, get, ControllerProps } from 'react-hook-form'
 import { Field } from '../../molecules'
 import type { ControlledRadioProps } from './types'
 
-import { useCallback } from '~hooks'
 import { RadioProps } from '~components/atoms'
+import { useCallback } from '~hooks'
 
 export const Radio = forwardRef<RadioProps, ControlledRadioProps>(
   ({ name, control, errors, isRequired, rules, ...props }, ref) => {
@@ -28,7 +28,7 @@ export const Radio = forwardRef<RadioProps, ControlledRadioProps>(
           />
         </Field>
       ),
-      [errorMessage, props, isRequired]
+      [errorMessage, props, isRequired, ref]
     )
 
     return <Controller name={name} control={control} rules={rules} render={renderRadio} />

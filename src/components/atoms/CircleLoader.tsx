@@ -1,3 +1,4 @@
+import { Box } from 'native-base'
 import React from 'react'
 import Animated, {
   Extrapolate,
@@ -6,7 +7,6 @@ import Animated, {
   useAnimatedStyle,
 } from 'react-native-reanimated'
 
-import { Box } from 'native-base'
 import { useCircleLoader } from '~hooks/loaders'
 
 type HalfCircleProps = {
