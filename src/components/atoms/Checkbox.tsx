@@ -1,100 +1,103 @@
-import { forwardRef, useCallback, useMemo } from 'react'
-import { View, Text, Pressable, StyleSheet } from 'react-native'
+import { Text } from 'native-base'
+import { useCallback, useMemo } from 'react'
+import { View, Pressable, StyleSheet } from 'react-native'
 
 import { Icon } from './Icon'
 import { CheckboxProps } from './types'
 
-const CHECKBOX_SIZE = 22
-export const Checkbox = forwardRef<any, CheckboxProps>(
-  (
-    {
-      disabled,
-      value,
-      onChange,
-      checkboxText,
-      size = 30,
-      isError,
-      checkboxTextColor = 'black',
-      isChecked,
-      checkboxes,
-      ...props
-    },
-    ref
-  ) => {
-    const handleValueChange = useCallback(() => {
-      return checkboxes ? onChange() : onChange(!value)
-    }, [onChange, value, checkboxes])
+import { useColorScheme } from '~contexts'
+import { useTheme } from '~hooks'
 
-    const iconColor = useMemo(() => {
-      if (disabled && value) {
-        return 'gray'
-      }
+export const Checkbox = ({
+  disabled,
+  value,
+  onChange,
+  checkboxText,
+  size = 22,
+  isError,
+  isChecked,
+  checkboxes,
+  ...props
+}: CheckboxProps) => {
+  const { colors } = useTheme()
+  const { colorScheme } = useColorScheme()
+  const handleValueChange = useCallback(() => {
+    return checkboxes ? onChange(value) : onChange(!value)
+  }, [onChange, value, checkboxes])
 
-      return 'black'
-    }, [disabled, value])
+  const themeColors = useMemo(
+    () => (colorScheme === 'light' ? colors.black : colors.white),
+    [colors, colorScheme]
+  )
 
-    const bgColor = useMemo(() => {
-      if (!value) {
-        return 'white'
-      }
-      if (disabled) {
-        return '#EBEBE4'
-      }
+  const iconColor = useMemo(() => {
+    if (disabled && value) {
+      return colors.gray['500']
+    }
 
-      return 'transparent'
-    }, [disabled, value])
+    return themeColors
+  }, [disabled, value, colors, themeColors])
 
-    const borderColor = useMemo(
-      () => (isError ? 'red' : disabled ? 'grey' : 'black'),
-      [isError, disabled]
-    )
+  const bgColor = useMemo(() => {
+    if (!value) {
+      return colors.white
+    }
+    if (disabled) {
+      return colors.lightGray
+    }
 
-    return (
-      <Pressable
-        onPress={handleValueChange}
-        hitSlop={{
-          top: 5,
-          left: 5,
-          bottom: 5,
-        }}
-        style={styles.mainContainer}
-        disabled={disabled}
-        ref={ref}
-      >
-        <View style={styles.row}>
-          <View
-            style={[
-              styles.checkbox,
-              {
-                backgroundColor: bgColor,
-                borderColor,
-                height: CHECKBOX_SIZE || size,
-                width: CHECKBOX_SIZE || size,
-              },
-            ]}
-            hitSlop={{
-              top: 15,
-              left: 15,
-              bottom: 15,
-            }}
-            {...props}
-          >
-            {isChecked ? <Icon color={iconColor} name="check-line" size={18} /> : null}
-          </View>
-          <Text style={{ color: checkboxTextColor }}>{checkboxText}</Text>
+    return 'transparent'
+  }, [disabled, value, colors])
+
+  const borderColor = useMemo(
+    () => (isError ? colors.red['500'] : disabled ? colors.gray['500'] : themeColors),
+    [isError, disabled, colors, themeColors]
+  )
+
+  return (
+    <Pressable
+      onPress={handleValueChange}
+      hitSlop={{
+        top: 5,
+        left: 5,
+        bottom: 5,
+      }}
+      style={styles.mainContainer}
+      disabled={disabled}
+    >
+      <View style={styles.row}>
+        <View
+          style={[
+            styles.checkbox,
+            {
+              backgroundColor: bgColor,
+              borderColor,
+              height: size,
+              width: size,
+            },
+          ]}
+          hitSlop={{
+            top: 15,
+            left: 15,
+            bottom: 15,
+          }}
+          {...props}
+        >
+          {isChecked ? <Icon color={iconColor} name="check-line" size={18} /> : null}
         </View>
-      </Pressable>
-    )
-  }
-)
+        <Text>{checkboxText}</Text>
+      </View>
+    </Pressable>
+  )
+}
 
 const styles = StyleSheet.create({
   checkbox: {
     alignItems: 'center',
-    borderRadius: 8,
+    borderRadius: 4,
     borderWidth: 1,
     justifyContent: 'center',
-    marginRight: 12,
+    marginRight: 8,
   },
   mainContainer: {
     alignItems: 'center',

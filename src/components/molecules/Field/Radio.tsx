@@ -4,15 +4,31 @@ import { StyleSheet, View } from 'react-native'
 
 import { FieldRadioProps } from './types'
 
-import { FormErrorMessage, FormLabel } from '~components/atoms'
+import { FormErrorMessage, FormLabel, RadioProps } from '~components/atoms'
+import { useColorScheme } from '~contexts'
+import { useTheme } from '~hooks'
 
-export const Radio = forwardRef<any, FieldRadioProps>(
+export const Radio = forwardRef<RadioProps, FieldRadioProps>(
   (
     { isRequired, value, radioOptions, errorMessage, isError, onChange, label, labelStyle },
     ref
   ) => {
-    const borderColor = useMemo(() => (isError ? 'red' : 'black'), [isError])
-    const bgColor = useCallback((item: string) => (item === value ? 'blue' : 'gray'), [value])
+    const { colors } = useTheme()
+    const { colorScheme } = useColorScheme()
+
+    const themeColors = useMemo(
+      () => (colorScheme === 'light' ? colors.black : colors.white),
+      [colors, colorScheme]
+    )
+
+    const borderColor = useMemo(
+      () => (isError ? colors.red['500'] : themeColors),
+      [isError, themeColors, colors]
+    )
+    const bgColor = useCallback(
+      (item: string) => (item === value ? colors.blue['500'] : colors.gray['500']),
+      [value, colors]
+    )
 
     const renderRadioButtons = useMemo(
       () =>

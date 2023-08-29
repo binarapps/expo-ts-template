@@ -13,6 +13,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Icon } from './Icon'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
 
+import { useColorScheme } from '~contexts'
+import { useTheme } from '~hooks'
+
 const ITEM_HEIGHT = 56
 
 const bottomSheetContentHeight = Dimensions.get('screen').height / 1.5
@@ -33,6 +36,7 @@ const SelectItem = <T extends SelectKey>({
   disabled: boolean
 }) => {
   const selected = value?.includes(item.value)
+  const { colors } = useTheme()
 
   const onItemSelect = useCallback(() => {
     if (maxSelectedItems === 1) {
@@ -53,7 +57,10 @@ const SelectItem = <T extends SelectKey>({
     }
   }, [closeDropdown, item.value, maxSelectedItems, setValue, value])
 
-  const color = useMemo(() => (disabled && !selected ? 'gray' : 'black'), [disabled, selected])
+  const color = useMemo(
+    () => (disabled && !selected ? colors.gray['500'] : colors.black),
+    [disabled, selected, colors]
+  )
 
   return (
     <Box key={item.value}>
@@ -68,7 +75,7 @@ const SelectItem = <T extends SelectKey>({
             <Box
               borderRadius={5}
               hitSlop={{ top: 5, left: 15, bottom: 5 }}
-              borderColor={disabled && !selected ? 'gray' : 'black'}
+              borderColor={disabled && !selected ? colors.gray['500'] : colors.black}
               borderWidth={1}
               width={5}
               height={5}
@@ -76,7 +83,7 @@ const SelectItem = <T extends SelectKey>({
               justifyContent="center"
               alignItems="center"
             >
-              {selected ? <Icon color="gray" name="check-fill" size={18} /> : null}
+              {selected ? <Icon color={colors.gray['500']} name="check-fill" size={18} /> : null}
             </Box>
             <Row flex={1} alignItems="center">
               <Text style={{ color }}>{item.labelInDropdown ?? item.label}</Text>
@@ -99,6 +106,8 @@ export const Select = <T extends SelectKey>({
   isError = false,
 }: SelectProps<T>) => {
   const ref = useRef<BottomSheetModal>(null)
+  const { colors } = useTheme()
+  const { colorScheme } = useColorScheme()
 
   const snapPoints = useMemo(() => ['CONTENT_HEIGHT'], [])
 
@@ -167,8 +176,14 @@ export const Select = <T extends SelectKey>({
   )
 
   const inputColor = useMemo(() => {
-    return isError ? 'red' : dropdownDisabled ? 'gray' : 'black'
-  }, [dropdownDisabled, isError])
+    return isError
+      ? colors.red['500']
+      : dropdownDisabled
+      ? colors.gray['500']
+      : colorScheme === 'light'
+      ? colors.black
+      : colors.white
+  }, [dropdownDisabled, isError, colors, colorScheme])
 
   return (
     <>
@@ -177,8 +192,10 @@ export const Select = <T extends SelectKey>({
           numberOfLines={1}
           style={[
             styles.textInput,
-            isError ? styles.errorBorder : styles.normalBorder,
-            { color: inputColor },
+            isError ? { borderColor: colors.red['500'] } : { borderColor: colors.gray['500'] },
+            {
+              color: inputColor,
+            },
           ]}
         >
           {label}
@@ -207,9 +224,6 @@ export const Select = <T extends SelectKey>({
 }
 
 const styles = StyleSheet.create({
-  errorBorder: {
-    borderColor: 'red',
-  },
   icon: {
     position: 'absolute',
     right: 8,
@@ -220,12 +234,8 @@ const styles = StyleSheet.create({
   mainWrapper: {
     justifyContent: 'center',
   },
-  normalBorder: {
-    borderColor: 'gray',
-  },
   textInput: {
     alignItems: 'center',
-    backgroundColor: 'white',
     borderRadius: 8,
     borderWidth: 1,
     flex: 1,

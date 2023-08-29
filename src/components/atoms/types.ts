@@ -55,12 +55,11 @@ export type RadioProps = {
 
 export type CheckboxProps = ViewProps & {
   value: boolean | string[]
-  onChange: any
+  onChange: (newValue: boolean | string[]) => void
   checkboxText?: string
   disabled?: boolean
   size?: number
   isError?: boolean
-  checkboxTextColor?: string
   isChecked?: boolean
   checkboxes?: string[]
 }

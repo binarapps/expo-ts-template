@@ -19,11 +19,12 @@ export const Checkbox = ({
   ...props
 }: FieldCheckboxProps) => {
   const renderCheckboxes = useMemo(() => {
-    return checkboxes?.map((item, index) => {
+    return checkboxes?.map((item: string, index: number) => {
       const handleChange = () => {
         if (Array.isArray(value)) {
           if (!value?.includes(item)) {
-            onChange((prev: string[]) => [...prev, item])
+            const newArr = [...value, item]
+            onChange(newArr)
           } else {
             const newArr = value.filter((el) => el !== item)
             onChange(newArr)

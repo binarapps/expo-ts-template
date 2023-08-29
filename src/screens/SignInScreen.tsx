@@ -90,15 +90,14 @@ export const SignInScreen = (): JSX.Element => {
           <ControlledField.Checkbox
             control={control}
             errors={errors}
-            label={t('sign_in_screen.remember_me')}
-            mb={4}
             name="confirm"
-            testID="confirmCheckbox"
+            checkboxText={t('sign_in_screen.remember_me')}
+            size={18}
           />
           <Button
             isDisabled={isSubmitting}
             isLoading={isSubmitting}
-            mb={8}
+            my={8}
             onPress={submit}
             testID="signInButton"
             width="64"
