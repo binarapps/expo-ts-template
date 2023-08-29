@@ -30,6 +30,7 @@ const commonColors = {
   border: '#000',
   card: '#fff',
   notification: '#000',
+  lightGray: '#EBEBE4',
 }
 
 export const ProjectColors = {

@@ -3,7 +3,12 @@ import { StyleSheet, Text, View } from 'react-native'
 
 import { FormLabelProps } from './types'
 
+import { useColorScheme } from '~contexts'
+import { useTheme } from '~hooks'
+
 export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => {
+  const { colors } = useTheme()
+  const { colorScheme } = useColorScheme()
   const stylesForRequired =
     labelStyle &&
     Object.fromEntries(
@@ -15,9 +20,14 @@ export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => 
   return (
     <View style={[styles.wrapper, { ...(label && { marginBottom: 8, marginTop: 4 }) }]}>
       {label && (
-        <Text style={labelStyle}>
+        <Text
+          style={[
+            labelStyle,
+            { color: labelStyle?.color || (colorScheme === 'light' ? colors.black : colors.white) },
+          ]}
+        >
           {label}
-          {isRequired && <Text style={[stylesForRequired, styles.requiredText]}>*</Text>}
+          {isRequired && <Text style={[stylesForRequired, { color: colors.red['500'] }]}>*</Text>}
         </Text>
       )}
     </View>
@@ -25,9 +35,6 @@ export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => 
 }
 
 const styles = StyleSheet.create({
-  requiredText: {
-    color: 'red',
-  },
   wrapper: {
     display: 'flex',
     flexDirection: 'row',

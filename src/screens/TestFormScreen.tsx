@@ -149,8 +149,8 @@ export const TestFormScreen = (): JSX.Element => {
       <ControlledField.Select
         items={mappedShoeSizes}
         control={control}
-        name="shoeSize"
         errors={errors}
+        name="shoeSize"
         placeholder={t('test_form.shoe_size')}
         rules={VALIDATION.shoeSize}
         isRequired
@@ -163,6 +163,7 @@ export const TestFormScreen = (): JSX.Element => {
         name="music"
         rules={VALIDATION.music}
         label={t('test_form.which_music')}
+        isRequired
       />
       <ControlledField.Checkbox
         control={control}
@@ -171,6 +172,7 @@ export const TestFormScreen = (): JSX.Element => {
         checkboxes={INTERESTS}
         rules={VALIDATION.interests}
         label={t('test_form.interests')}
+        isRequired
       />
       <Text fontSize="xl" fontWeight="bold" py={2}>
         {t('test_form.additiona_comment')}

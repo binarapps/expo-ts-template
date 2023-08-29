@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react'
 
 import { ControlledField, KeyboardAwareScrollView } from '~components'
-import { Button, Center } from '~components/atoms'
+import { Button, Center, Spacer } from '~components/atoms'
 import { REGEX } from '~constants'
 import { useSignUpForm, useTranslation, useTheme } from '~hooks'
 
@@ -73,23 +73,25 @@ export const SignUpScreen = () => {
             required: t('form.required'),
           }}
         />
-
+        <Spacer y="2" />
         <ControlledField.Checkbox
           isRequired
           control={control}
           errors={errors}
           name="agree"
-          label={t('sign_up_screen.agree_terms_label')}
-          mb={2}
+          size={18}
+          checkboxText={t('sign_up_screen.agree_terms_label')}
         />
+        <Spacer y="2" />
         <ControlledField.Checkbox
           isRequired
           control={control}
           errors={errors}
           name="newsletter"
-          label={t('sign_up_screen.newsletter_label')}
-          mb={4}
+          size={18}
+          checkboxText={t('sign_up_screen.newsletter_label')}
         />
+        <Spacer y="2" />
         <Button onPress={submit} isLoading={isSubmitting} isDisabled={isSubmitting}>
           {t('sign_up_screen.sign_up')}
         </Button>
