@@ -10,7 +10,17 @@ import { useTheme } from '~hooks'
 
 export const Radio = forwardRef<RadioProps, FieldRadioProps>(
   (
-    { isRequired, value, radioOptions, errorMessage, isError, onChange, label, labelStyle },
+    {
+      isRequired,
+      value,
+      radioOptions,
+      errorMessage,
+      isError,
+      onChange,
+      label,
+      labelStyle,
+      isDisabled,
+    },
     ref
   ) => {
     const { colors } = useTheme()
@@ -22,8 +32,8 @@ export const Radio = forwardRef<RadioProps, FieldRadioProps>(
     )
 
     const borderColor = useMemo(
-      () => (isError ? colors.red['500'] : themeColors),
-      [isError, themeColors, colors]
+      () => (isError ? colors.red['500'] : isDisabled ? colors.gray['400'] : themeColors),
+      [isError, themeColors, colors, isDisabled]
     )
     const bgColor = useCallback(
       (item: string) => (item === value ? colors.blue['500'] : colors.gray['500']),
