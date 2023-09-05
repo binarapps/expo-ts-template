@@ -26,6 +26,16 @@
       "channel": "qa",
       "distribution": "store",
       "ios": { "autoIncrement": "buildNumber" }
+    },
+    "e2e": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release",
+        "withoutCredentials": true
+      },
+      "ios": {
+        "simulator": true
+      },
+      "buildArtifactPaths": ["artifacts/**/*.png"]
     }
   },
   "cli": {

@@ -39,7 +39,7 @@ export const SignInScreen = (): JSX.Element => {
 
   return (
     <KeyboardAwareScrollView>
-      <Box alignItems={'flex-end'} width="full" pr={8}>
+      <Box alignItems="flex-end" width="full" pr={8}>
         <LanguagePicker />
       </Box>
       <Center p={8} flex={1} flexGrow={1} width={space['full']}>

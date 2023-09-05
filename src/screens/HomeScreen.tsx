@@ -17,7 +17,7 @@ export const HomeScreen = (props: HomeScreenProps): JSX.Element => {
   }, [navigate])
 
   return (
-    <Center flex={1}>
+    <Center flex={1} testID="homeScreen">
       <Image
         source={colorScheme === 'light' ? lightLogo : darkLogo}
         style={styles.logo}
