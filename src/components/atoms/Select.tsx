@@ -21,8 +21,7 @@ import { useColorScheme } from '~contexts'
 import { useTheme } from '~hooks'
 
 const ITEM_HEIGHT = 56
-
-const bottomSheetContentHeight = Dimensions.get('screen').height / 1.5
+const BOTTOM_SHEET_CONTENT_HEIGHT = Dimensions.get('screen').height / 1.5
 
 const SelectItem = <T extends SelectKey>({
   item,
@@ -215,7 +214,7 @@ export const Select = <T extends SelectKey>({
       >
         <Box pb={6} px={4} onLayout={handleContentLayout}>
           <BottomSheetFlatList
-            style={{ maxHeight: bottomSheetContentHeight }}
+            style={styles.bottomSheetFlatList}
             data={items}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
@@ -228,6 +227,9 @@ export const Select = <T extends SelectKey>({
 }
 
 const styles = StyleSheet.create({
+  bottomSheetFlatList: {
+    maxHeight: BOTTOM_SHEET_CONTENT_HEIGHT,
+  },
   icon: {
     position: 'absolute',
     right: 8,

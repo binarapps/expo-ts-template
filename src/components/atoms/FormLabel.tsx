@@ -20,7 +20,7 @@ export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => 
     )
 
   return (
-    <View style={[styles.wrapper, { ...(label && { marginBottom: 8, marginTop: 4 }) }]}>
+    <View style={[styles.wrapper, { ...(label && styles.wrapperWithLabel) }]}>
       {label && (
         <Text
           style={[
@@ -40,5 +40,9 @@ const styles = StyleSheet.create({
   wrapper: {
     display: 'flex',
     flexDirection: 'row',
+  },
+  wrapperWithLabel: {
+    marginBottom: 8,
+    marginTop: 4,
   },
 })
