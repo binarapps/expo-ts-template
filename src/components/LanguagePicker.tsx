@@ -1,3 +1,5 @@
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { Pressable, Menu, IPressableProps } from 'native-base'
 import { StyleSheet } from 'react-native'
 import Animated, {
@@ -10,10 +12,14 @@ import Animated, {
 import languages from '../../assets/languages.json'
 
 import { Icon, Row, Text } from '~components/atoms'
+import { useColorScheme } from '~contexts'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
 import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
-  const { sizes } = useTheme()
+  const { sizes, colors } = useTheme()
+  const { colorScheme } = useColorScheme()
   const { i18n } = useTranslation()
   const language = i18n.language.slice(0, 2).toUpperCase() as keyof typeof languages
   const isOpen = useSharedValue(false)
@@ -26,6 +32,8 @@ export const LanguagePicker: React.FC = () => {
   const styles = StyleSheet.create({
     icon: { height: sizes[8], justifyContent: 'center' },
   })
+
+  const iconColor = colorScheme === 'light' ? colors.black : colors.white
 
   const renderTrigger = useCallback(
     (
@@ -44,13 +52,13 @@ export const LanguagePicker: React.FC = () => {
               {languages[language].emoji}
             </Text>
             <Animated.View style={[animatedIconStyle, styles.icon]}>
-              <Icon size={24} name="arrow-down-line" />
+              <Icon size={24} name="arrow-down-s-line" color={iconColor} />
             </Animated.View>
           </Row>
         </Pressable>
       )
     },
-    [animatedIconStyle, isOpen, language, styles.icon]
+    [animatedIconStyle, isOpen, language, styles.icon, iconColor]
   )
 
   const handleItemPress = useCallback(
