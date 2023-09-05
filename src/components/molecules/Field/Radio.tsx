@@ -1,3 +1,5 @@
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { Box, Pressable, Text } from 'native-base'
 import { forwardRef, useCallback, useMemo } from 'react'
 import { StyleSheet, View } from 'react-native'
@@ -6,6 +8,8 @@ import { FieldRadioProps } from './types'
 
 import { FormErrorMessage, FormLabel, RadioProps } from '~components/atoms'
 import { useColorScheme } from '~contexts'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
 import { useTheme } from '~hooks'
 
 export const Radio = forwardRef<RadioProps, FieldRadioProps>(

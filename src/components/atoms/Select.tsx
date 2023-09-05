@@ -5,6 +5,8 @@ import {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
 } from '@gorhom/bottom-sheet'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { Box, Row } from 'native-base'
 import { useCallback, useMemo, useRef } from 'react'
 import { Keyboard, Pressable, StyleSheet, Text, Dimensions } from 'react-native'
@@ -14,6 +16,8 @@ import { Icon } from './Icon'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
 
 import { useColorScheme } from '~contexts'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
 import { useTheme } from '~hooks'
 
 const ITEM_HEIGHT = 56

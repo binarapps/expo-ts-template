@@ -10,6 +10,8 @@ import {
 import { Box, Button, Center, Text } from '~components/atoms'
 import { REGEX, darkLogo, lightLogo } from '~constants'
 import { useColorScheme } from '~contexts'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
 import {
   useCallback,
   useSignInForm,

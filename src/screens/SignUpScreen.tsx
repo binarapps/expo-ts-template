@@ -3,6 +3,8 @@ import { useCallback, useEffect } from 'react'
 import { ControlledField, KeyboardAwareScrollView } from '~components'
 import { Button, Center, Spacer } from '~components/atoms'
 import { REGEX } from '~constants'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
 import { useSignUpForm, useTranslation, useTheme } from '~hooks'
 
 export const SignUpScreen = () => {

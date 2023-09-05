@@ -1,3 +1,5 @@
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { Text } from 'native-base'
 import { useCallback, useMemo } from 'react'
 import { View, Pressable, StyleSheet } from 'react-native'
@@ -6,6 +8,8 @@ import { Icon } from './Icon'
 import { CheckboxProps } from './types'
 
 import { useColorScheme } from '~contexts'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
 import { useTheme } from '~hooks'
 
 export const Checkbox = ({

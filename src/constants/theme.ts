@@ -1,4 +1,6 @@
 import type { Theme } from '@react-navigation/native'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { extendTheme } from 'native-base'
 
 const commonColors = {

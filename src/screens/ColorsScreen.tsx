@@ -1,7 +1,11 @@
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { Theme } from 'native-base'
 import { ScrollView, StyleSheet } from 'react-native'
 
 import { Box, Text, Row, Center } from '~components/atoms'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
 import { useTheme } from '~hooks'
 
 type ColorsKeys = keyof Theme['colors']

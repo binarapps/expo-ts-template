@@ -1,3 +1,5 @@
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove native-base components when issue is resolved
 import { Pressable, Menu, IPressableProps } from 'native-base'
 import { StyleSheet } from 'react-native'
 import Animated, {
@@ -10,6 +12,8 @@ import Animated, {
 import languages from '../../assets/languages.json'
 
 import { Icon, Row, Text } from '~components/atoms'
+// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+// Remove `useTheme` hook when issue is resolved
 import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
