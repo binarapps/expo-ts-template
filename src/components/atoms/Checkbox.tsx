@@ -80,11 +80,6 @@ export const Checkbox = ({
               width: size,
             },
           ]}
-          hitSlop={{
-            top: 15,
-            left: 15,
-            bottom: 15,
-          }}
           {...props}
         >
           {isChecked ? <Icon color={iconColor} name="check-line" size={18} /> : null}
