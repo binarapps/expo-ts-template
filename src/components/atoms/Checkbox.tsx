@@ -1,17 +1,14 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Text } from 'native-base'
 import { useCallback, useMemo } from 'react'
 import { View, Pressable, StyleSheet } from 'react-native'
 
 import { Icon } from './Icon'
+import { Text } from './Text'
 import { CheckboxProps } from './types'
 
 import { useColorScheme } from '~contexts'
-
 // TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useTheme` hook when issue is resolved
-import { useTheme } from '~hooks'
+// Remove `useNativeBaseTheme` hook when issue is resolved
+import { useNativeBaseTheme } from '~hooks'
 
 export const Checkbox = ({
   disabled,
@@ -24,7 +21,7 @@ export const Checkbox = ({
   checkboxes,
   ...props
 }: CheckboxProps) => {
-  const { colors } = useTheme()
+  const { colors } = useNativeBaseTheme()
   const { colorScheme } = useColorScheme()
   const handleValueChange = useCallback(() => {
     return checkboxes ? onChange(value) : onChange(!value)
@@ -48,7 +45,7 @@ export const Checkbox = ({
       return colors.white
     }
     if (disabled) {
-      return colors.lightGray
+      return colors.gray['200']
     }
 
     return 'transparent'

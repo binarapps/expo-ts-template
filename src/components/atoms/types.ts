@@ -1,8 +1,127 @@
-import { IBoxProps, Theme, IInputProps } from 'native-base'
-import { TextStyle, ViewProps, ViewStyle } from 'react-native'
+import { IBoxProps, IInputProps } from 'native-base'
+import { DimensionValue, TextStyle, ViewProps, ViewStyle } from 'react-native'
 
+import { theme } from '~constants/newTheme'
 import { IconNames } from '~types/icon'
-import { ColorNames } from '~types/native-base'
+
+export type ColorNames = NestedKeys<typeof theme.colors>
+
+type Sizing = 'width' | 'minWidth' | 'maxWidth' | 'height' | 'minHeight' | 'maxHeight'
+export type SizingValue = DimensionValue
+export type SizingProps = {
+  [key in Sizing]?: DimensionValue
+}
+
+export type BackgroundProps = {
+  bg?: ColorNames
+  bgOpacity?: ViewStyle['opacity']
+}
+
+export type SpacingValue = keyof typeof theme.space | number
+export type Spacing =
+  | 'm'
+  | 'mt'
+  | 'ml'
+  | 'mr'
+  | 'mb'
+  | 'mx'
+  | 'my'
+  | 'p'
+  | 'pr'
+  | 'pt'
+  | 'pl'
+  | 'pb'
+  | 'px'
+  | 'py'
+export type SpacingProps = {
+  [key in Spacing]?: SpacingValue
+}
+
+export type FlexProps = {
+  flex?: ViewStyle['flex']
+  flexGrow?: ViewStyle['flexGrow']
+  flexBasis?: ViewStyle['flexBasis']
+  flexShrink?: ViewStyle['flexShrink']
+  justifyContent?: ViewStyle['justifyContent']
+  alignItems?: ViewStyle['alignItems']
+  alignContent?: ViewStyle['alignContent']
+  alignSelf?: ViewStyle['alignSelf']
+  flexDirection?: ViewStyle['flexDirection']
+  flexWrap?: ViewStyle['flexWrap']
+}
+
+export type EffectsProps = {
+  /**
+   * **Float value**, from 0 to 1
+   */
+  opacity?: ViewStyle['opacity']
+}
+
+export type BordersProps = {
+  borderColor?: ColorNames
+  /**
+   * **Number value in pixels**
+   */
+  borderRadius?: ViewStyle['borderRadius']
+  /**
+   * **Number value in pixels**
+   */
+  borderWidth?: ViewStyle['borderWidth']
+  /**
+   * **Number value in pixels**
+   */
+  borderStyle?: ViewStyle['borderStyle']
+  /**
+   * **Number value in pixels**
+   */
+  borderBottomEndRadius?: ViewStyle['borderBottomEndRadius']
+  /**
+   * **Number value in pixels**
+   */
+  borderBottomLeftRadius?: ViewStyle['borderBottomLeftRadius']
+  /**
+   * **Number value in pixels**
+   */
+  borderTopEndRadius?: ViewStyle['borderTopEndRadius']
+  /**
+   * **Number value in pixels**
+   */
+  borderTopLeftRadius?: ViewStyle['borderTopLeftRadius']
+  /**
+   * **Number value in pixels**
+   */
+  borderTopWidth?: ViewStyle['borderTopWidth']
+  /**
+   * **Number value in pixels**
+   */
+  borderBottomWidth?: ViewStyle['borderBottomWidth']
+  /**
+   * **Number value in pixels**
+   */
+  borderLeftWidth?: ViewStyle['borderLeftWidth']
+  /**
+   * **Number value in pixels**
+   */
+  borderRightWidth?: ViewStyle['borderRightWidth']
+}
+
+export type LayoutsProps = {
+  position?: ViewStyle['position']
+  zIndex?: ViewStyle['zIndex']
+  top?: ViewStyle['top']
+  bottom?: ViewStyle['bottom']
+  right?: ViewStyle['right']
+  left?: ViewStyle['left']
+  overflow?: ViewStyle['overflow']
+}
+
+export type StyledProps = SizingProps &
+  BackgroundProps &
+  SpacingProps &
+  FlexProps &
+  EffectsProps &
+  BordersProps &
+  LayoutsProps
 
 export type FormLabelProps = {
   label?: string
@@ -12,7 +131,6 @@ export type FormLabelProps = {
 
 export type AbsoluteProps = Omit<IBoxProps, 'position'>
 
-export type SpacingValue = keyof Theme['space']
 export type SpacerProps = {
   x?: SpacingValue
   y?: SpacingValue

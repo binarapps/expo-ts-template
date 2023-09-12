@@ -3,6 +3,92 @@ import type { Theme } from '@react-navigation/native'
 // Remove native-base components when issue is resolved
 import { extendTheme } from 'native-base'
 
+export const colorPalette = {
+  black: '#000',
+  white: '#fff',
+  red: {
+    50: '#ffe1e1',
+    100: '#ffb1b1',
+    200: '#ff7f7f',
+    300: '#ff4c4c',
+    400: '#ff1a1a',
+    500: '#e60000',
+    600: '#b40000',
+    700: '#820000',
+    800: '#500000',
+    900: '#210000',
+  },
+  green: {
+    50: '#e1ffe1',
+    100: '#b1ffb1',
+    200: '#7fff7f',
+    300: '#4cff4c',
+    400: '#1aff1a',
+    500: '#00e600',
+    600: '#00b400',
+    700: '#008200',
+    800: '#005000',
+    900: '#002100',
+  },
+  blue: {
+    50: '#e1f2ff',
+    100: '#b1dfff',
+    200: '#7fc2ff',
+    300: '#4ca5ff',
+    400: '#1a89ff',
+    500: '#006eff',
+    600: '#0051b4',
+    700: '#003480',
+    800: '#001d4d',
+    900: '#00071a',
+  },
+  yellow: {
+    50: '#fffde1',
+    100: '#fffbb1',
+    200: '#fff87f',
+    300: '#fff54c',
+    400: '#fff21a',
+    500: '#ffe900',
+    600: '#b4b400',
+    700: '#828200',
+    800: '#505000',
+    900: '#1a1a00',
+  },
+  gray: {
+    50: '#f2f2f2',
+    100: '#e6e6e6',
+    200: '#cccccc',
+    300: '#b3b3b3',
+    400: '#999999',
+    500: '#808080',
+    600: '#666666',
+    700: '#4d4d4d',
+    800: '#333333',
+    900: '#1a1a1a',
+  },
+}
+
+export const colors = {
+  primary: colorPalette.blue['500'],
+  primaryLight: colorPalette.blue['100'],
+  primaryDark: colorPalette.blue['900'],
+  secondary: colorPalette.red['300'],
+  secondaryLight: colorPalette.red['100'],
+  secondaryDark: colorPalette.red['900'],
+  tertiary: colorPalette.green['500'],
+  tertiaryLight: colorPalette.green['100'],
+  tertiaryDark: colorPalette.green['900'],
+  success: colorPalette.green['400'],
+  warning: colorPalette.yellow['500'],
+  danger: colorPalette.red['500'],
+  info: colorPalette.blue['100'],
+  light: colorPalette.gray['50'],
+  dark: colorPalette.black['900'],
+  white: colorPalette.white,
+  black: colorPalette.black,
+  transparent: 'transparent',
+}
+
 const commonColors = {
   primary: {
     50: '#e9eeff',
@@ -94,7 +180,7 @@ export const theme = extendTheme({
     useSystemColorMode: false,
     initialColorMode: 'light',
   },
-  colors: { ...commonColors, ...ProjectColors },
+  colors,
   space,
   shadows: {
     inputShadow: {

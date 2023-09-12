@@ -1,9 +1,10 @@
 // TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
 // Remove native-base components when issue is resolved
-import { Box, Modal } from 'native-base'
+import { Modal } from 'native-base'
 import { forwardRef, useCallback, useImperativeHandle } from 'react'
 import { ScrollView } from 'react-native'
 
+import { Box } from '~components'
 import { useState } from '~hooks'
 
 type Props = {
@@ -30,7 +31,7 @@ export const BottomSheet = forwardRef(({ children }: Props, ref) => {
 
   return (
     <Modal isOpen={isOpen} onClose={closeModalHandler}>
-      <Box bg="white" py="4">
+      <Box bg="white" py={4}>
         {children}
       </Box>
     </Modal>

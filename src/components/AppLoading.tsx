@@ -57,7 +57,7 @@ export const AppLoading: FC<PropsWithChildren> = ({ children }) => {
       {isLoading ? null : children}
       {isLoading || isDelayLoading ? (
         <AbsoluteFullFill bg="white">
-          <Center flex="1">
+          <Center flex={1}>
             <Loader type="bubbles" />
           </Center>
         </AbsoluteFullFill>

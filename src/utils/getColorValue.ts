@@ -1,9 +1,8 @@
-import { theme } from '~constants'
 import { ColorNames } from '~types/native-base'
 
 type GetColorValueProps = {
   color: ColorNames
-  colors: (typeof theme)['colors']
+  colors: Colors
 }
 
 export const getColorValue = ({ color, colors }: GetColorValueProps): string => {

@@ -29,22 +29,16 @@ export const SettingsScreen = (): JSX.Element => {
           const isSelected = scheme === colorSchemeSetting
 
           return (
-            <Button
-              size="lg"
-              width="64"
-              key={scheme}
-              mb={2}
-              onPress={handleColorSchemeSettingChange(scheme)}
-            >
+            <Button size="lg" key={scheme} mb={2} onPress={handleColorSchemeSettingChange(scheme)}>
               {scheme + (isSelected ? ' - selected' : '')}
             </Button>
           )
         })}
 
-        <Button colorScheme="danger" mt={8} size="lg" width="64" onPress={signOut}>
+        <Button.Secondary mt={8} size="lg" onPress={signOut}>
           {t('settings_screen.sign_out')}
-        </Button>
-        <Spacer y="10" />
+        </Button.Secondary>
+        <Spacer y={10} />
         <Version onPress={noop} />
       </Center>
     </ScrollView>

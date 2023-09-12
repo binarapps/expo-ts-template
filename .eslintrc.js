@@ -25,6 +25,7 @@ module.exports = {
   },
   rules: {
     'no-redeclare': 'off',
+    'no-prototype-builtins': 'off',
     '@typescript-eslint/no-redeclare': ['error'],
     '@typescript-eslint/no-unused-vars': ['error'],
 
@@ -38,7 +39,29 @@ module.exports = {
     'react-native/no-raw-text': [
       2,
       {
-        skip: ['Button', 'Heading', 'Menu.Item'],
+        skip: [
+          'Text.H1',
+          'Text.H1Regular',
+          'Text.H1Bold',
+          'Text.H2',
+          'Text.H2Regular',
+          'Text.H2Bold',
+          'Text.H3',
+          'Text.H3Regular',
+          'Text.H3Bold',
+          'Text.H4',
+          'Text.H4Regular',
+          'Text.H4Bold',
+          'Text.H5',
+          'Text.H5Regular',
+          'Text.H5Bold',
+          'Text.H6',
+          'Text.H6Regular',
+          'Text.H6Bold',
+          'Button',
+          'Heading',
+          'Menu.Item',
+        ],
       },
     ],
   },

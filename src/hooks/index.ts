@@ -22,8 +22,9 @@ export {
   useColorModeValue,
   useLayout,
   useNativeBase,
-  useTheme,
+  useTheme as useNativeBaseTheme,
 } from 'native-base'
+export { useTheme } from './useTheme'
 export {
   useCallback,
   useContext,

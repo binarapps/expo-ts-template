@@ -28,13 +28,14 @@ declare global {
   // WebTabParamListEnd
 
   type RootStackParamList = {
+    NativeBaseMigration: undefined
+
     // Root_unauthorized
     SignUp: undefined
     SignIn: undefined
 
     // Root_authorized
     MainTab: NavigatorScreenParams<MainTabParamList>
-    Settings: undefined
 
     // Root_modals
     ApplicationInfo: undefined

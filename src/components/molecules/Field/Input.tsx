@@ -1,13 +1,8 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Box } from 'native-base'
 import { forwardRef, useCallback, useImperativeHandle, useRef, useMemo } from 'react'
 import { NativeSyntheticEvent, Pressable, TextInput, TextInputFocusEventData } from 'react-native'
 
-import { Input as BaseInput } from '../../atoms/Input'
+import { FormErrorMessage, FormLabel, Input as BaseInput, Box } from '../../atoms'
 import type { FieldInputProps } from './types'
-
-import { FormErrorMessage, FormLabel } from '~components/atoms'
 
 const layoutPropsKeys = [
   'm',

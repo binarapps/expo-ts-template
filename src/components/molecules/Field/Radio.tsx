@@ -1,18 +1,15 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Box, Pressable, Text } from 'native-base'
 import { forwardRef, useCallback, useMemo } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, TouchableOpacity } from 'react-native'
 
+import { FormErrorMessage, FormLabel, Box, Touchable, Text } from '../../atoms'
 import { FieldRadioProps } from './types'
 
-import { FormErrorMessage, FormLabel, RadioProps } from '~components/atoms'
 import { useColorScheme } from '~contexts'
 // TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useTheme` hook when issue is resolved
-import { useTheme } from '~hooks'
+// Remove `useNativeBaseTheme` hook when issue is resolved
+import { useNativeBaseTheme } from '~hooks'
 
-export const Radio = forwardRef<RadioProps, FieldRadioProps>(
+export const Radio = forwardRef<TouchableOpacity, FieldRadioProps>(
   (
     {
       isRequired,
@@ -27,7 +24,7 @@ export const Radio = forwardRef<RadioProps, FieldRadioProps>(
     },
     ref
   ) => {
-    const { colors } = useTheme()
+    const { colors } = useNativeBaseTheme()
     const { colorScheme } = useColorScheme()
 
     const themeColors = useMemo(
@@ -48,7 +45,16 @@ export const Radio = forwardRef<RadioProps, FieldRadioProps>(
       () =>
         radioOptions?.map((item: string, index: number) => {
           return (
-            <Pressable ref={ref} key={index} onPress={() => onChange(item)} style={styles.wrapper}>
+            <Touchable
+              ref={ref}
+              key={index}
+              onPress={() => onChange(item)}
+              alignItems="center"
+              flex={1}
+              flexDirection="row"
+              height={40}
+              width="100%"
+            >
               <View
                 style={[
                   styles.circleOut,
@@ -61,15 +67,15 @@ export const Radio = forwardRef<RadioProps, FieldRadioProps>(
                   <View style={[styles.circleIn, { backgroundColor: bgColor(item) }]} />
                 ) : null}
               </View>
-              <Text style={styles.text}>{item}</Text>
-            </Pressable>
+              <Text ml={4}>{item}</Text>
+            </Touchable>
           )
         }),
       [radioOptions, value, bgColor, borderColor, onChange, ref]
     )
 
     return (
-      <Box width="100%" mb="2">
+      <Box width="100%" mb={2}>
         <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
         {renderRadioButtons}
         <FormErrorMessage errorMessage={errorMessage} />
@@ -91,15 +97,5 @@ const styles = StyleSheet.create({
     height: 22,
     justifyContent: 'center',
     width: 22,
-  },
-  text: {
-    marginLeft: 8,
-  },
-  wrapper: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    height: 40,
-    width: '100%',
   },
 })

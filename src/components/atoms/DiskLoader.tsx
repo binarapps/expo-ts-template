@@ -1,6 +1,3 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Box } from 'native-base'
 import React, { useEffect } from 'react'
 import Animated, {
   Easing,
@@ -12,6 +9,8 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated'
+
+import { Box } from './Box'
 
 export type DiskLoaderType = {
   circleColor?: string
@@ -62,7 +61,7 @@ export const DiskLoader = ({
         <Box
           width={circleSize}
           height={circleSize}
-          borderRadius="full"
+          borderRadius={999}
           position="absolute"
           bg={circleColor}
         />

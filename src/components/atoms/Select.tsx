@@ -5,20 +5,21 @@ import {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
 } from '@gorhom/bottom-sheet'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Box, Row } from 'native-base'
 import { useCallback, useMemo, useRef } from 'react'
-import { Keyboard, Pressable, StyleSheet, Text, Dimensions } from 'react-native'
+import { Keyboard, StyleSheet, Dimensions } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
+import { Box } from './Box'
 import { Icon } from './Icon'
+import { Row } from './Row'
+import { Text } from './Text'
+import { Touchable } from './Touchable'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
 
 import { useColorScheme } from '~contexts'
 // TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useTheme` hook when issue is resolved
-import { useTheme } from '~hooks'
+// Remove `useNativeBaseTheme` hook when issue is resolved
+import { useNativeBaseTheme } from '~hooks'
 
 const ITEM_HEIGHT = 56
 const BOTTOM_SHEET_CONTENT_HEIGHT = Dimensions.get('screen').height / 1.5
@@ -39,7 +40,7 @@ const SelectItem = <T extends SelectKey>({
   disabled: boolean
 }) => {
   const selected = value?.includes(item.value)
-  const { colors } = useTheme()
+  const { colors } = useNativeBaseTheme()
 
   const onItemSelect = useCallback(() => {
     if (maxSelectedItems === 1) {
@@ -109,7 +110,7 @@ export const Select = <T extends SelectKey>({
   isError = false,
 }: SelectProps<T>) => {
   const ref = useRef<BottomSheetModal>(null)
-  const { colors } = useTheme()
+  const { colors } = useNativeBaseTheme()
   const { colorScheme } = useColorScheme()
 
   const snapPoints = useMemo(() => ['CONTENT_HEIGHT'], [])
@@ -190,7 +191,7 @@ export const Select = <T extends SelectKey>({
 
   return (
     <>
-      <Pressable disabled={dropdownDisabled} onPress={showDropdown} style={styles.mainWrapper}>
+      <Touchable disabled={dropdownDisabled} onPress={showDropdown} justifyContent="center">
         <Text
           numberOfLines={1}
           style={[
@@ -204,7 +205,7 @@ export const Select = <T extends SelectKey>({
           {label}
         </Text>
         <Icon color={inputColor} size={22} name="arrow-down-s-line" style={styles.icon} />
-      </Pressable>
+      </Touchable>
       <BottomSheetModal
         backdropComponent={renderBackdrop}
         ref={ref}
@@ -236,9 +237,6 @@ const styles = StyleSheet.create({
   },
   itemWrapper: {
     padding: 8,
-  },
-  mainWrapper: {
-    justifyContent: 'center',
   },
   textInput: {
     alignItems: 'center',

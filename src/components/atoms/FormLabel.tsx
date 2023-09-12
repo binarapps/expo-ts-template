@@ -5,11 +5,11 @@ import { FormLabelProps } from './types'
 
 import { useColorScheme } from '~contexts'
 // TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useTheme` hook when issue is resolved
-import { useTheme } from '~hooks'
+// Remove `useNativeBaseTheme` hook when issue is resolved
+import { useNativeBaseTheme } from '~hooks'
 
 export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => {
-  const { colors } = useTheme()
+  const { colors } = useNativeBaseTheme()
   const { colorScheme } = useColorScheme()
   const stylesForRequired =
     labelStyle &&

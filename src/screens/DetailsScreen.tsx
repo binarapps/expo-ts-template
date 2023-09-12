@@ -9,7 +9,7 @@ export const DetailsScreen = (props: DetailsScreenProps): JSX.Element => {
   const { t } = useTranslation()
 
   const bottomSheet = bottomSheetComponentRenderFunction(
-    <Box p="10">
+    <Box p={10}>
       <Text color="black">{t('details_screen.awesome')}</Text>
     </Box>
   )

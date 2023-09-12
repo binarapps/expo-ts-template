@@ -38,7 +38,7 @@ export const BottomSheet = forwardRef(
         handleHeight={animatedHandleHeight}
         contentHeight={animatedContentHeight}
       >
-        <Box py="4" onLayout={handleContentLayout}>
+        <Box py={4} onLayout={handleContentLayout}>
           {children}
         </Box>
       </BottomSheetModal>
