@@ -15,7 +15,7 @@ import { Loader } from '../Loader'
 import { Text } from '../Text'
 import { StyledProps } from '../types'
 
-import { theme } from '~constants'
+import { _appTheme } from '~constants'
 import { buttonVariants } from '~constants/buttonVariants'
 import { getColorValue } from '~utils'
 
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   baseText: {
-    color: theme.colors.white,
+    color: _appTheme.colors.white,
     fontStyle: 'normal',
     fontWeight: '400',
     letterSpacing: 0,
@@ -73,11 +73,11 @@ const RawButton = memo<ButtonProps>(
       () => ({
         backgroundColor: getColorValue({
           color: pressedStyle.backgroundColor,
-          colors: theme.colors,
+          colors: _appTheme.colors,
         }),
         borderColor: getColorValue({
           color: pressedStyle.borderColor,
-          colors: theme.colors,
+          colors: _appTheme.colors,
         }),
         borderWidth: pressedStyle.borderWidth,
       }),
@@ -88,7 +88,7 @@ const RawButton = memo<ButtonProps>(
       () => ({
         color: getColorValue({
           color: pressedStyle.color,
-          colors: theme.colors,
+          colors: _appTheme.colors,
         }),
       }),
       [pressedStyle]
@@ -98,11 +98,11 @@ const RawButton = memo<ButtonProps>(
       () => ({
         backgroundColor: getColorValue({
           color: notPressedStyle.backgroundColor,
-          colors: theme.colors,
+          colors: _appTheme.colors,
         }),
         borderColor: getColorValue({
           color: notPressedStyle.borderColor,
-          colors: theme.colors,
+          colors: _appTheme.colors,
         }),
         borderWidth: notPressedStyle.borderWidth,
       }),
@@ -113,7 +113,7 @@ const RawButton = memo<ButtonProps>(
       () => ({
         color: getColorValue({
           color: notPressedStyle.color,
-          colors: theme.colors,
+          colors: _appTheme.colors,
         }),
       }),
       [notPressedStyle]
@@ -123,11 +123,11 @@ const RawButton = memo<ButtonProps>(
       () => ({
         backgroundColor: getColorValue({
           color: disabledStyle.backgroundColor,
-          colors: theme.colors,
+          colors: _appTheme.colors,
         }),
         borderColor: getColorValue({
           color: disabledStyle.borderColor,
-          colors: theme.colors,
+          colors: _appTheme.colors,
         }),
         borderWidth: disabledStyle.borderWidth,
       }),
@@ -138,7 +138,7 @@ const RawButton = memo<ButtonProps>(
       () => ({
         color: getColorValue({
           color: disabledStyle.color,
-          colors: theme.colors,
+          colors: _appTheme.colors,
         }),
       }),
       [disabledStyle]

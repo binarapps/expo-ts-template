@@ -65,8 +65,6 @@ export const TestFormScreen = (): JSX.Element => {
     []
   )
 
-  console.log({ component: ControlledField.Radio })
-
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container}>
       <Text fontSize="xl" fontWeight="bold" py={2}>

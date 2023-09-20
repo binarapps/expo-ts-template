@@ -22,7 +22,6 @@ export {
   useColorModeValue,
   useLayout,
   useNativeBase,
-  useTheme as useNativeBaseTheme,
 } from 'native-base'
 export { useTheme } from './useTheme'
 export {

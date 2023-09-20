@@ -47,7 +47,7 @@ exports[`Button renders correctly 1`] = `
     style={
       {
         "alignItems": "center",
-        "backgroundColor": "#006eff",
+        "backgroundColor": "#3b82f6",
         "borderColor": "transparent",
         "borderRadius": 4,
         "borderWidth": undefined,
@@ -65,6 +65,7 @@ exports[`Button renders correctly 1`] = `
       style={
         {
           "color": "#fff",
+          "fontFamily": "Lato-Regular",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",

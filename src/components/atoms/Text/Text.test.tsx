@@ -1,6 +1,6 @@
 import { Text } from '.'
 
-import { theme } from '~constants'
+import { _appTheme } from '~constants'
 import { cleanup, render } from '~utils/testUtils'
 
 afterEach(cleanup)
@@ -68,7 +68,7 @@ describe('Text', () => {
   it('renders correctly with a custom color', () => {
     const { getByText } = render(<Text color="red.400">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
-      color: theme.colors.red[400],
+      color: _appTheme.colors.red[400],
       textTransform: 'none',
     })
   })
@@ -106,7 +106,7 @@ describe('Text', () => {
     expect(getByText('Hello World').props.style).toStrictEqual({
       fontWeight: 'bold',
       fontStyle: 'italic',
-      color: theme.colors.red[400],
+      color: _appTheme.colors.red[400],
       textDecorationLine: 'underline',
       textTransform: 'none',
     })
@@ -115,6 +115,7 @@ describe('Text', () => {
   it('renders correctly with variant H1', () => {
     const { getByText } = render(<Text variant="H1">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 48,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -124,6 +125,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H1', () => {
     const { getByText } = render(<Text.H1>Hello World</Text.H1>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 48,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -133,6 +135,7 @@ describe('Text', () => {
   it('renders correctly with variant H1Bold', () => {
     const { getByText } = render(<Text variant="H1Bold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 48,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -142,6 +145,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H1Bold', () => {
     const { getByText } = render(<Text.H1Bold>Hello World</Text.H1Bold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 48,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -151,6 +155,7 @@ describe('Text', () => {
   it('renders correctly with variant H2', () => {
     const { getByText } = render(<Text variant="H2">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 36,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -160,6 +165,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H2', () => {
     const { getByText } = render(<Text.H2>Hello World</Text.H2>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 36,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -169,6 +175,7 @@ describe('Text', () => {
   it('renders correctly with variant H2Bold', () => {
     const { getByText } = render(<Text variant="H2Bold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 36,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -178,6 +185,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H2Bold', () => {
     const { getByText } = render(<Text.H2Bold>Hello World</Text.H2Bold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 36,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -187,6 +195,7 @@ describe('Text', () => {
   it('renders correctly with variant H3', () => {
     const { getByText } = render(<Text variant="H3">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 30,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -196,6 +205,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H3', () => {
     const { getByText } = render(<Text.H3>Hello World</Text.H3>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 30,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -205,6 +215,7 @@ describe('Text', () => {
   it('renders correctly with variant H3Bold', () => {
     const { getByText } = render(<Text variant="H3Bold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 30,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -214,6 +225,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H3Bold', () => {
     const { getByText } = render(<Text.H3Bold>Hello World</Text.H3Bold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 30,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -223,6 +235,7 @@ describe('Text', () => {
   it('renders correctly with variant H4', () => {
     const { getByText } = render(<Text variant="H4">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 24,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -232,6 +245,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H4', () => {
     const { getByText } = render(<Text.H4>Hello World</Text.H4>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 24,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -241,6 +255,7 @@ describe('Text', () => {
   it('renders correctly with variant H4Bold', () => {
     const { getByText } = render(<Text variant="H4Bold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 24,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -250,6 +265,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H4Bold', () => {
     const { getByText } = render(<Text.H4Bold>Hello World</Text.H4Bold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 24,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -259,6 +275,7 @@ describe('Text', () => {
   it('renders correctly with variant H5', () => {
     const { getByText } = render(<Text variant="H5">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 20,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -268,6 +285,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H5', () => {
     const { getByText } = render(<Text.H5>Hello World</Text.H5>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 20,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -277,6 +295,7 @@ describe('Text', () => {
   it('renders correctly with variant H5Bold', () => {
     const { getByText } = render(<Text variant="H5Bold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 20,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -286,6 +305,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H5Bold', () => {
     const { getByText } = render(<Text.H5Bold>Hello World</Text.H5Bold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 20,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -295,6 +315,7 @@ describe('Text', () => {
   it('renders correctly with variant H6', () => {
     const { getByText } = render(<Text variant="H6">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 18,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -304,6 +325,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H6', () => {
     const { getByText } = render(<Text.H6>Hello World</Text.H6>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 18,
       fontWeight: 'normal',
       textTransform: 'none',
@@ -313,6 +335,7 @@ describe('Text', () => {
   it('renders correctly with variant H6Bold', () => {
     const { getByText } = render(<Text variant="H6Bold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 18,
       fontWeight: 'bold',
       textTransform: 'none',
@@ -322,6 +345,7 @@ describe('Text', () => {
   it('renders correctly compound Text.H6Bold', () => {
     const { getByText } = render(<Text.H6Bold>Hello World</Text.H6Bold>)
     expect(getByText('Hello World').props.style).toStrictEqual({
+      fontFamily: 'Lato-Bold',
       fontSize: 18,
       fontWeight: 'bold',
       textTransform: 'none',

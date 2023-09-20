@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 import { Button } from '.'
 
-import { theme } from '~constants'
+import { _appTheme } from '~constants'
 import { cleanup, render, fireEvent, act } from '~utils/testUtils'
 
 afterEach(cleanup)
@@ -16,7 +16,7 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.Primary title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       alignItems: 'center',
-      backgroundColor: theme.colors.primary,
+      backgroundColor: _appTheme.colors.primary,
       borderColor: 'transparent',
       borderRadius: 4,
       borderWidth: undefined,
@@ -32,7 +32,7 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.Secondary title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       alignItems: 'center',
-      backgroundColor: theme.colors.secondary,
+      backgroundColor: _appTheme.colors.secondary,
       borderColor: 'transparent',
       borderRadius: 4,
       borderWidth: undefined,
@@ -49,7 +49,7 @@ describe('Button', () => {
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       alignItems: 'center',
       backgroundColor: 'transparent',
-      borderColor: theme.colors.primary,
+      borderColor: _appTheme.colors.primary,
       borderRadius: 4,
       borderWidth: StyleSheet.hairlineWidth,
       flexDirection: 'row',

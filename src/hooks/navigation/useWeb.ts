@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Dimensions } from 'react-native'
 
-import { theme } from '~constants'
+import { breakpoints } from '~constants'
 
 type ReturnType = {
   webContentWidth: number
   shouldApplyDesktopStyles: boolean
   shouldApplyMobileStyles: boolean
 }
-const {
-  breakpoints: { desktop, tablet },
-} = theme
+const { desktop, tablet } = breakpoints
 
 export const useWeb: () => ReturnType = () => {
   const [width, setWidth] = useState<number>(0)

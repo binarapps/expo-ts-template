@@ -4,12 +4,10 @@ import { StyleSheet, Text, View } from 'react-native'
 import { FormLabelProps } from './types'
 
 import { useColorScheme } from '~contexts'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useNativeBaseTheme` hook when issue is resolved
-import { useNativeBaseTheme } from '~hooks'
+import { useTheme } from '~hooks'
 
 export const FormLabel = ({ label, isRequired, labelStyle }: FormLabelProps) => {
-  const { colors } = useNativeBaseTheme()
+  const { colors } = useTheme()
   const { colorScheme } = useColorScheme()
   const stylesForRequired =
     labelStyle &&

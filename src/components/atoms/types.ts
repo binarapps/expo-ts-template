@@ -1,10 +1,10 @@
 import { IBoxProps, IInputProps } from 'native-base'
 import { DimensionValue, TextStyle, ViewProps, ViewStyle } from 'react-native'
 
-import { theme } from '~constants/newTheme'
+import { _appTheme } from '~constants'
 import { IconNames } from '~types/icon'
 
-export type ColorNames = NestedKeys<typeof theme.colors> | string
+export type ColorNames = NestedKeys<typeof _appTheme.colors> | string
 
 type Sizing =
   | 'w'
@@ -20,7 +20,7 @@ type Sizing =
   | 'maxH'
   | 'maxHeight'
 export type SizingValue =
-  | keyof typeof theme.size
+  | keyof typeof _appTheme.size
   | DimensionValue
   | `${number}%`
   | `${number}px`

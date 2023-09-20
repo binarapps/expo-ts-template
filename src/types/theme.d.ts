@@ -1,34 +1,20 @@
-import { theme } from '~constants/newTheme'
+import { _appTheme } from '~constants/theme'
 
 declare global {
+  // FONTS
+  type FontSizes = keyof typeof _appTheme.fontSizes
+  type LetterSpacings = keyof typeof _appTheme.letterSpacings
+  type LineHeights = keyof typeof _appTheme.lineHeights
+  type FontWeights = keyof typeof _appTheme.fontWeights
+  type Fonts = keyof typeof _appTheme.fonts
+
   // COLORS
-  type Colors = typeof theme.colors
+  type Colors = typeof _appTheme.colors
   type ColorNames = NestedKeys<Colors> | string
 
-  // SPACING
-  type Spacing =
-    | 'm'
-    | 'mt'
-    | 'ml'
-    | 'mr'
-    | 'mb'
-    | 'mx'
-    | 'my'
-    | 'p'
-    | 'pr'
-    | 'pt'
-    | 'pl'
-    | 'pb'
-    | 'px'
-    | 'py'
-
-  type SpacingUnit = keyof Spacing
-
-  // GRADIENTS
-  type Gradients = { [key in GradientNames]: [string, string] }
+  type Sizes = typeof _appTheme.size
+  type SizeKeys = keyof Sizes
 
   // THEME
-  // TODO: Replace any with correct AppTheme
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  type AppTheme = any
+  type AppTheme = typeof _appTheme
 }

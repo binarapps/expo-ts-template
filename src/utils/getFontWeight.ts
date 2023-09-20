@@ -1,8 +1,8 @@
 import { TextStyle } from 'react-native'
 
-import { theme } from '~constants'
+import { _appTheme } from '~constants'
 
-type FontWeights = NonNullable<keyof (typeof theme)['fontWeights'] | TextStyle['fontWeight']>
+type FontWeights = NonNullable<keyof (typeof _appTheme)['fontWeights'] | TextStyle['fontWeight']>
 
 const fontWeightsMap: { [key in FontWeights]: TextStyle['fontWeight'] } = {
   '100': '100',

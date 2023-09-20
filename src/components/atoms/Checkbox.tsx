@@ -6,9 +6,7 @@ import { Text } from './Text'
 import { CheckboxProps } from './types'
 
 import { useColorScheme } from '~contexts'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useNativeBaseTheme` hook when issue is resolved
-import { useNativeBaseTheme } from '~hooks'
+import { useTheme } from '~hooks'
 
 export const Checkbox = ({
   disabled,
@@ -21,7 +19,7 @@ export const Checkbox = ({
   checkboxes,
   ...props
 }: CheckboxProps) => {
-  const { colors } = useNativeBaseTheme()
+  const { colors } = useTheme()
   const { colorScheme } = useColorScheme()
   const handleValueChange = useCallback(() => {
     return checkboxes ? onChange(value) : onChange(!value)

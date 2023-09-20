@@ -1,7 +1,7 @@
-import { ProjectColors, theme } from '~constants/theme'
+import { ProjectColors, _appTheme } from '~constants/theme'
 import { IBoxProps } from 'native-base'
 
-type CustomThemeType = typeof theme
+type CustomThemeType = typeof _appTheme
 
 declare module 'native-base' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface

@@ -16,12 +16,10 @@ import { Text } from './atoms/Text'
 import { Touchable, TouchableProps } from './atoms/Touchables/Touchable'
 
 import { useColorScheme } from '~contexts'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useNativeBaseTheme` hook when issue is resolved
-import { useCallback, useTranslation, useNativeBaseTheme } from '~hooks'
+import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
-  const { sizes, colors } = useNativeBaseTheme()
+  const { size, colors } = useTheme()
 
   const { colorScheme } = useColorScheme()
   const { i18n } = useTranslation()
@@ -34,7 +32,7 @@ export const LanguagePicker: React.FC = () => {
   }))
 
   const styles = StyleSheet.create({
-    icon: { height: sizes[8], justifyContent: 'center' },
+    icon: { height: size['8'], justifyContent: 'center' },
   })
 
   const iconColor = colorScheme === 'light' ? colors.black : colors.white

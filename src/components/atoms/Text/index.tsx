@@ -4,16 +4,16 @@ import { TextProps as BaseTextProps, Text as BaseText, TextStyle } from 'react-n
 import { generateStyledComponent, generateStyleSheet } from '../../utils'
 import { StyledProps } from '../types'
 
-import { theme } from '~constants'
 import { textVariants } from '~constants/textVariants'
+import { useTheme } from '~hooks'
 import { getColorValue, convertEmToNumber, getFontWeight } from '~utils'
 
 type TypographyProps = {
-  fontSize?: keyof (typeof theme)['fontSizes'] | number
-  letterSpacing?: keyof (typeof theme)['letterSpacings']
-  lineHeight?: keyof (typeof theme)['lineHeights']
-  fontWeight?: keyof (typeof theme)['fontWeights']
-  fontFamily?: keyof (typeof theme)['fonts']
+  fontSize?: FontSizes | number
+  letterSpacing?: LetterSpacings
+  lineHeight?: LineHeights
+  fontWeight?: FontWeights
+  fontFamily?: Fonts
   color?: ColorNames
   noOfLines?: number
   textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify'
@@ -49,6 +49,7 @@ const RawText = memo<TextProps>(
     variant,
     ...props
   }) => {
+    const theme = useTheme()
     const {
       fontFamily: variantFontFamily,
       fontSize: variantFontSize,
@@ -70,7 +71,7 @@ const RawText = memo<TextProps>(
           ? convertEmToNumber(theme.lineHeights[lineHeight], finalFontSize)
           : undefined,
       }),
-      [lineHeight, finalFontSize]
+      [theme, lineHeight, finalFontSize]
     )
 
     const letterSpacingStyle = useMemo<TextStyle>(
@@ -79,14 +80,14 @@ const RawText = memo<TextProps>(
           ? convertEmToNumber(theme.letterSpacings[letterSpacing], finalFontSize)
           : undefined,
       }),
-      [letterSpacing, finalFontSize]
+      [theme, letterSpacing, finalFontSize]
     )
 
     const textColor = useMemo<TextStyle>(
       () => ({
         color: color ? getColorValue({ color, colors: theme.colors }) : undefined,
       }),
-      [color]
+      [theme, color]
     )
 
     const textAlignmentStyle = useMemo<TextStyle>(
@@ -133,7 +134,7 @@ const RawText = memo<TextProps>(
       () => ({
         fontFamily: fontFamily ? theme.fonts[fontFamily] : undefined,
       }),
-      [fontFamily]
+      [theme, fontFamily]
     )
 
     const fontSizeStyle = useMemo<TextStyle>(

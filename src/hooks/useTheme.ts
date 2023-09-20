@@ -1,6 +1,7 @@
-import { theme as newTheme } from '../constants/newTheme'
+import { theme } from '~constants'
+import { useColorScheme } from '~contexts'
 
-// TODO: Write logic for the theming
-export const useTheme = () => {
-  return newTheme
+export const useTheme = (): AppTheme => {
+  const { colorScheme } = useColorScheme()
+  return theme[colorScheme]
 }

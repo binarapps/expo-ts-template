@@ -1,7 +1,7 @@
 import { ViewStyle, DimensionValue, Animated } from 'react-native'
 
 import { SizingValue } from '~components'
-import { size, scale } from '~constants/newTheme'
+import { size, scale } from '~constants'
 
 const isDimensionValue = (value?: DimensionValue) => {
   // Dimension accepts only `percentage` strings that can be converted to numbers

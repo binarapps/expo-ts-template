@@ -6,8 +6,7 @@ import { FieldRadioProps } from './types'
 
 import { useColorScheme } from '~contexts'
 // TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useNativeBaseTheme` hook when issue is resolved
-import { useNativeBaseTheme } from '~hooks'
+import { useTheme } from '~hooks'
 
 export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
   (
@@ -24,7 +23,7 @@ export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
     },
     ref
   ) => {
-    const { colors } = useNativeBaseTheme()
+    const { colors } = useTheme()
     const { colorScheme } = useColorScheme()
 
     const themeColors = useMemo(

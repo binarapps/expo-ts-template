@@ -9,10 +9,10 @@
 
 1. Write correct `SpacingUnit` type - ✅
 2. Write correct `Colors` global type (in `theme.d.ts`) - ✅
-3. Write useTheme - TBD
-4. Write Theme - TBD
-5. Write Light&Dark themes - TBD
-6. All the web adjustments - TBD
+3. Write useTheme - ✅
+4. Write Theme - ✅
+5. Write Light&Dark themes - ✅
+6. All the web adjustments - 🟡 TO BE FIXED
 
 <!-- Components -->
 
@@ -29,7 +29,7 @@
 
 - Write tests - TBD
 
-4. Write Theme/useTheme - TBD
+4. Write Theme/useTheme - ✅
 
 - Write tests - TBD
 

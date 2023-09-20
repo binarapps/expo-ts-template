@@ -17,9 +17,7 @@ import { Touchable } from './Touchables/Touchable'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
 
 import { useColorScheme } from '~contexts'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove `useNativeBaseTheme` hook when issue is resolved
-import { useNativeBaseTheme } from '~hooks'
+import { useTheme } from '~hooks'
 
 const ITEM_HEIGHT = 56
 const BOTTOM_SHEET_CONTENT_HEIGHT = Dimensions.get('screen').height / 1.5
@@ -40,7 +38,7 @@ const SelectItem = <T extends SelectKey>({
   disabled: boolean
 }) => {
   const selected = value?.includes(item.value)
-  const { colors } = useNativeBaseTheme()
+  const { colors } = useTheme()
 
   const onItemSelect = useCallback(() => {
     if (maxSelectedItems === 1) {
@@ -110,7 +108,7 @@ export const Select = <T extends SelectKey>({
   isError = false,
 }: SelectProps<T>) => {
   const ref = useRef<BottomSheetModal>(null)
-  const { colors } = useNativeBaseTheme()
+  const { colors } = useTheme()
   const { colorScheme } = useColorScheme()
 
   const snapPoints = useMemo(() => ['CONTENT_HEIGHT'], [])

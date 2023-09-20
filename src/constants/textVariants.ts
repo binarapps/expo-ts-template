@@ -1,11 +1,9 @@
-import { theme } from './theme'
-
 import { TextVariant } from '~components'
 
 type VariantStyle = {
-  fontFamily: keyof (typeof theme)['fonts']
-  fontSize: keyof (typeof theme)['fontSizes']
-  fontWeight: keyof (typeof theme)['fontWeights']
+  fontFamily: Fonts
+  fontSize: FontSizes
+  fontWeight: FontWeights
 }
 
 export const textVariants: { [key in TextVariant]: VariantStyle } = {
