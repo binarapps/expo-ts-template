@@ -13,7 +13,7 @@ import languages from '../../assets/languages.json'
 import { Icon } from './atoms/Icon'
 import { Row } from './atoms/Row'
 import { Text } from './atoms/Text'
-import { Touchable, TouchableProps } from './atoms/Touchable'
+import { Touchable, TouchableProps } from './atoms/Touchables/Touchable'
 
 import { useColorScheme } from '~contexts'
 // TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)

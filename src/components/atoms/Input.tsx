@@ -6,7 +6,7 @@ import { TextInput } from 'react-native'
 
 import type { InputProps } from '.'
 import { Icon } from './Icon'
-import { Touchable } from './Touchable'
+import { Touchable } from './Touchables/Touchable'
 
 import { useSecurePassword } from '~hooks'
 

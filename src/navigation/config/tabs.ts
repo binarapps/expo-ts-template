@@ -129,7 +129,7 @@ export const bottomTabsScreensData = [
       active: 'home-gear-fill',
       inactive: 'home-gear-line',
     } as BottomTabIcons,
-    name: BottomTabsScreens.Settings,
+    name: BottomTabsScreens.SettingsStack,
     screens: settingsStackScreensData,
     options: { title: t('navigation.screen_titles.settings') },
   },

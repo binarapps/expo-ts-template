@@ -10,7 +10,7 @@ import {
   EffectsProps,
   BackgroundProps,
 } from '../atoms/types'
-import { generateSpace } from './generateSpace'
+import { generateSize } from './generateSize'
 
 import { hex2rgba, getColorValue, removeFalsyProperties } from '~utils'
 
@@ -58,53 +58,65 @@ const generateSpacingStyle = ({
   py,
 }: SpacingProps): StyleProp<ViewStyle> => {
   const style: StyleProp<ViewStyle> = [
-    generateSpace(p, 'padding'),
-    generateSpace(px, 'paddingHorizontal'),
-    generateSpace(py, 'paddingVertical'),
-    generateSpace(pb, 'paddingBottom'),
-    generateSpace(pt, 'paddingTop'),
-    generateSpace(pl, 'paddingLeft'),
-    generateSpace(pr, 'paddingRight'),
-    generateSpace(m, 'margin'),
-    generateSpace(mx, 'marginHorizontal'),
-    generateSpace(my, 'marginVertical'),
-    generateSpace(mb, 'marginBottom'),
-    generateSpace(mt, 'marginTop'),
-    generateSpace(ml, 'marginLeft'),
-    generateSpace(mr, 'marginRight'),
+    generateSize(p, 'padding'),
+    generateSize(px, 'paddingHorizontal'),
+    generateSize(py, 'paddingVertical'),
+    generateSize(pb, 'paddingBottom'),
+    generateSize(pt, 'paddingTop'),
+    generateSize(pl, 'paddingLeft'),
+    generateSize(pr, 'paddingRight'),
+    generateSize(m, 'margin'),
+    generateSize(mx, 'marginHorizontal'),
+    generateSize(my, 'marginVertical'),
+    generateSize(mb, 'marginBottom'),
+    generateSize(mt, 'marginTop'),
+    generateSize(ml, 'marginLeft'),
+    generateSize(mr, 'marginRight'),
   ]
 
   return style.filter(Boolean)
 }
 
 const generateBgStyle = (
-  { bg, bgOpacity = 1 }: BackgroundProps,
+  { bg, backgroundColor, backgroundOpacity = 1, bgOpacity = 1 }: BackgroundProps,
   colors: Colors
 ): StyleProp<ViewStyle> => {
-  if (!bg) return undefined
+  if (!bg && !backgroundColor) return undefined
 
-  const color = getColorValue({ color: bg, colors })
-  if (color && typeof bgOpacity === 'number') {
-    return { backgroundColor: hex2rgba(color, bgOpacity) }
+  const color = getColorValue({ color: bg || backgroundColor, colors })
+  if (color && (typeof bgOpacity === 'number' || typeof backgroundOpacity === 'number')) {
+    return { backgroundColor: hex2rgba(color, (bgOpacity || backgroundOpacity) as number) }
   }
 }
 
 const generateSizingStyle = ({
+  w,
   width,
+  h,
   height,
+  minW,
   minWidth,
+  minH,
   minHeight,
+  maxW,
   maxWidth,
+  maxH,
   maxHeight,
 }: SizingProps): StyleProp<ViewStyle> => {
-  const style: StyleProp<ViewStyle> = {
-    width,
-    minWidth,
-    maxWidth,
-    height,
-    minHeight,
-    maxHeight,
-  }
+  const style: StyleProp<ViewStyle> = [
+    generateSize(w, 'width'),
+    generateSize(width, 'width'),
+    generateSize(h, 'height'),
+    generateSize(height, 'height'),
+    generateSize(minW, 'minWidth'),
+    generateSize(minWidth, 'minWidth'),
+    generateSize(minH, 'minHeight'),
+    generateSize(minHeight, 'minHeight'),
+    generateSize(maxW, 'maxWidth'),
+    generateSize(maxWidth, 'maxWidth'),
+    generateSize(maxH, 'maxHeight'),
+    generateSize(maxHeight, 'maxHeight'),
+  ]
   return style
 }
 
@@ -178,6 +190,12 @@ export const generateStyleSheet = <T extends ViewStyle | TextStyle | ImageStyle>
   return filteredFlattenStyles
 }
 
+/**
+ * Generates a style sheet based on the provided props and colors.
+ * @param props - The styled props to generate styles for.
+ * @param colors - The color palette to use for generating background and border styles.
+ * @returns A style sheet object containing the generated styles.
+ */
 export const generateStyledSystem = (props: StyledProps, colors: Colors) => {
   const flexStyle = generateFlexStyle(props)
   const spacingStyle = generateSpacingStyle(props)

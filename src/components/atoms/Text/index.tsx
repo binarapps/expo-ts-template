@@ -181,27 +181,19 @@ const RawText = memo<TextProps>(
 
 export type TextVariant =
   | 'H1'
-  | 'H1Regular'
   | 'H1Bold'
   | 'H2'
-  | 'H2Regular'
   | 'H2Bold'
   | 'H3'
-  | 'H3Regular'
   | 'H3Bold'
   | 'H4'
-  | 'H4Regular'
   | 'H4Bold'
   | 'H5'
-  | 'H5Regular'
   | 'H5Bold'
   | 'H6'
-  | 'H6Regular'
   | 'H6Bold'
   | 'Body'
-  | 'Regular'
   | 'Bold'
-  | 'BodyBold'
   | 'Caption'
   | 'CaptionBold'
   | 'Subtitle'
@@ -215,27 +207,19 @@ const generateTextVariant = (variant: TextVariant) => (props: TextProps) =>
   <Text variant={variant} {...props} />
 
 Text.H1 = generateTextVariant('H1')
-Text.H1Regular = generateTextVariant('H1Regular')
 Text.H1Bold = generateTextVariant('H1Bold')
 Text.H2 = generateTextVariant('H2')
-Text.H2Regular = generateTextVariant('H2Regular')
 Text.H2Bold = generateTextVariant('H2Bold')
 Text.H3 = generateTextVariant('H3')
-Text.H3Regular = generateTextVariant('H3Regular')
 Text.H3Bold = generateTextVariant('H3Bold')
 Text.H4 = generateTextVariant('H4')
-Text.H4Regular = generateTextVariant('H4Regular')
 Text.H4Bold = generateTextVariant('H4Bold')
 Text.H5 = generateTextVariant('H5')
-Text.H5Regular = generateTextVariant('H5Regular')
 Text.H5Bold = generateTextVariant('H5Bold')
 Text.H6 = generateTextVariant('H6')
-Text.H6Regular = generateTextVariant('H6Regular')
 Text.H6Bold = generateTextVariant('H6Bold')
 Text.Body = generateTextVariant('Body')
-Text.Regular = generateTextVariant('Regular')
 Text.Bold = generateTextVariant('Bold')
-Text.BodyBold = generateTextVariant('BodyBold')
 Text.Caption = generateTextVariant('Caption')
 Text.CaptionBold = generateTextVariant('CaptionBold')
 Text.Subtitle = generateTextVariant('Subtitle')

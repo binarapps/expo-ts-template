@@ -65,11 +65,11 @@ export const palette = {
 
 export const colors = {
   primary: palette.blue['500'],
-  primaryLight: palette.blue['100'],
-  primaryDark: palette.blue['900'],
-  secondary: palette.red['300'],
-  secondaryLight: palette.red['100'],
-  secondaryDark: palette.red['900'],
+  primaryLight: palette.blue['300'],
+  primaryDark: palette.blue['700'],
+  secondary: palette.red['500'],
+  secondaryLight: palette.red['300'],
+  secondaryDark: palette.red['700'],
   tertiary: palette.green['500'],
   tertiaryLight: palette.green['100'],
   tertiaryDark: palette.green['900'],
@@ -103,7 +103,7 @@ export const fontSizes = {
 
 export const scale = fontSizes.md
 
-export const space = {
+export const size = {
   '0': 0,
   '0.5': 0.125 * scale,
   '1': 0.25 * scale,
@@ -167,7 +167,7 @@ export const theme = {
     ...palette,
     ...colors,
   },
-  space,
+  size,
   shadows: {
     inputShadow: {
       shadowOffset: { width: 0, height: 2 },

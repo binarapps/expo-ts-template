@@ -60,13 +60,11 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
       [props]
     )
 
-    const handleFocus = useCallback(
-      (e?: NativeSyntheticEvent<TextInputFocusEventData>) => {
-        onFocus && e && onFocus?.(e)
-        _inputRef?.current?.focus()
-      },
-      [onFocus]
-    )
+    const handleFocus = useCallback(() => {
+      onFocus?.()
+      _inputRef?.current?.focus()
+    }, [onFocus])
+
     const handleBlur = useCallback(
       (e?: NativeSyntheticEvent<TextInputFocusEventData>) => {
         onBlur && e && onBlur(e)
@@ -87,7 +85,7 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
 
     return (
       <Box {...layoutProps} width="100%" mb="2">
-        <Pressable onPress={() => handleFocus()}>
+        <Pressable onPress={handleFocus}>
           <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
           <BaseInput
             isRequired={isRequired}

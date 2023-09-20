@@ -1,7 +1,7 @@
 import { forwardRef, useCallback, useMemo } from 'react'
-import { StyleSheet, View, TouchableOpacity } from 'react-native'
 
 import { FormErrorMessage, FormLabel, Box, Touchable, Text } from '../../atoms'
+import type { TouchableRef } from '../../atoms/Touchables/Touchable'
 import { FieldRadioProps } from './types'
 
 import { useColorScheme } from '~contexts'
@@ -9,7 +9,7 @@ import { useColorScheme } from '~contexts'
 // Remove `useNativeBaseTheme` hook when issue is resolved
 import { useNativeBaseTheme } from '~hooks'
 
-export const Radio = forwardRef<TouchableOpacity, FieldRadioProps>(
+export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
   (
     {
       isRequired,
@@ -55,18 +55,19 @@ export const Radio = forwardRef<TouchableOpacity, FieldRadioProps>(
               height={40}
               width="100%"
             >
-              <View
-                style={[
-                  styles.circleOut,
-                  {
-                    borderColor,
-                  },
-                ]}
+              <Box
+                alignItems="center"
+                borderRadius={50}
+                borderWidth={1}
+                height={22}
+                width={22}
+                justifyContent="center"
+                borderColor={borderColor}
               >
                 {item === value ? (
-                  <View style={[styles.circleIn, { backgroundColor: bgColor(item) }]} />
+                  <Box borderRadius={50} height={14} width={14} bg={bgColor(item)} />
                 ) : null}
-              </View>
+              </Box>
               <Text ml={4}>{item}</Text>
             </Touchable>
           )
@@ -83,19 +84,3 @@ export const Radio = forwardRef<TouchableOpacity, FieldRadioProps>(
     )
   }
 )
-
-const styles = StyleSheet.create({
-  circleIn: {
-    borderRadius: 50,
-    height: 14,
-    width: 14,
-  },
-  circleOut: {
-    alignItems: 'center',
-    borderRadius: 50,
-    borderWidth: 1,
-    height: 22,
-    justifyContent: 'center',
-    width: 22,
-  },
-})

@@ -4,20 +4,38 @@ import { DimensionValue, TextStyle, ViewProps, ViewStyle } from 'react-native'
 import { theme } from '~constants/newTheme'
 import { IconNames } from '~types/icon'
 
-export type ColorNames = NestedKeys<typeof theme.colors>
+export type ColorNames = NestedKeys<typeof theme.colors> | string
 
-type Sizing = 'width' | 'minWidth' | 'maxWidth' | 'height' | 'minHeight' | 'maxHeight'
-export type SizingValue = DimensionValue
+type Sizing =
+  | 'w'
+  | 'width'
+  | 'minW'
+  | 'minWidth'
+  | 'maxW'
+  | 'maxWidth'
+  | 'h'
+  | 'height'
+  | 'minH'
+  | 'minHeight'
+  | 'maxH'
+  | 'maxHeight'
+export type SizingValue =
+  | keyof typeof theme.size
+  | DimensionValue
+  | `${number}%`
+  | `${number}px`
+  | number
 export type SizingProps = {
-  [key in Sizing]?: DimensionValue
+  [key in Sizing]?: SizingValue
 }
 
 export type BackgroundProps = {
   bg?: ColorNames
+  backgroundColor?: ColorNames
   bgOpacity?: ViewStyle['opacity']
+  backgroundOpacity?: ViewStyle['opacity']
 }
 
-export type SpacingValue = keyof typeof theme.space | number
 export type Spacing =
   | 'm'
   | 'mt'
@@ -34,7 +52,7 @@ export type Spacing =
   | 'px'
   | 'py'
 export type SpacingProps = {
-  [key in Spacing]?: SpacingValue
+  [key in Spacing]?: SizingValue
 }
 
 export type FlexProps = {
@@ -132,8 +150,8 @@ export type FormLabelProps = {
 export type AbsoluteProps = Omit<IBoxProps, 'position'>
 
 export type SpacerProps = {
-  x?: SpacingValue
-  y?: SpacingValue
+  x?: SizingValue
+  y?: SizingValue
   flex?: ViewStyle['flex']
 }
 

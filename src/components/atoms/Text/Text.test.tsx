@@ -130,24 +130,6 @@ describe('Text', () => {
     })
   })
 
-  it('renders correctly with variant H1Regular', () => {
-    const { getByText } = render(<Text variant="H1Regular">Hello World</Text>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 48,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
-  it('renders correctly compound Text.H1Regular', () => {
-    const { getByText } = render(<Text.H1Regular>Hello World</Text.H1Regular>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 48,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
   it('renders correctly with variant H1Bold', () => {
     const { getByText } = render(<Text variant="H1Bold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
@@ -177,24 +159,6 @@ describe('Text', () => {
 
   it('renders correctly compound Text.H2', () => {
     const { getByText } = render(<Text.H2>Hello World</Text.H2>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 36,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
-  it('renders correctly with variant H2Regular', () => {
-    const { getByText } = render(<Text variant="H2Regular">Hello World</Text>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 36,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
-  it('renders correctly compound Text.H2Regular', () => {
-    const { getByText } = render(<Text.H2Regular>Hello World</Text.H2Regular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       fontSize: 36,
       fontWeight: 'normal',
@@ -238,24 +202,6 @@ describe('Text', () => {
     })
   })
 
-  it('renders correctly with variant H3Regular', () => {
-    const { getByText } = render(<Text variant="H3Regular">Hello World</Text>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 30,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
-  it('renders correctly compound Text.H3Regular', () => {
-    const { getByText } = render(<Text.H3Regular>Hello World</Text.H3Regular>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 30,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
   it('renders correctly with variant H3Bold', () => {
     const { getByText } = render(<Text variant="H3Bold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
@@ -285,24 +231,6 @@ describe('Text', () => {
 
   it('renders correctly compound Text.H4', () => {
     const { getByText } = render(<Text.H4>Hello World</Text.H4>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 24,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
-  it('renders correctly with variant H4Regular', () => {
-    const { getByText } = render(<Text variant="H4Regular">Hello World</Text>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 24,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
-  it('renders correctly compound Text.H4Regular', () => {
-    const { getByText } = render(<Text.H4Regular>Hello World</Text.H4Regular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       fontSize: 24,
       fontWeight: 'normal',
@@ -346,24 +274,6 @@ describe('Text', () => {
     })
   })
 
-  it('renders correctly with variant H5Regular', () => {
-    const { getByText } = render(<Text variant="H5Regular">Hello World</Text>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 20,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
-  it('renders correctly compound Text.H5Regular', () => {
-    const { getByText } = render(<Text.H5Regular>Hello World</Text.H5Regular>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 20,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
   it('renders correctly with variant H5Bold', () => {
     const { getByText } = render(<Text variant="H5Bold">Hello World</Text>)
     expect(getByText('Hello World').props.style).toStrictEqual({
@@ -393,24 +303,6 @@ describe('Text', () => {
 
   it('renders correctly compound Text.H6', () => {
     const { getByText } = render(<Text.H6>Hello World</Text.H6>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 18,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
-  it('renders correctly with variant H6Regular', () => {
-    const { getByText } = render(<Text variant="H6Regular">Hello World</Text>)
-    expect(getByText('Hello World').props.style).toStrictEqual({
-      fontSize: 18,
-      fontWeight: 'normal',
-      textTransform: 'none',
-    })
-  })
-
-  it('renders correctly compound Text.H6Regular', () => {
-    const { getByText } = render(<Text.H6Regular>Hello World</Text.H6Regular>)
     expect(getByText('Hello World').props.style).toStrictEqual({
       fontSize: 18,
       fontWeight: 'normal',

@@ -14,7 +14,7 @@ export const RootStackScreens = {
 export const BottomTabsScreens = {
   HomeStack: 'HomeStack',
   ExamplesStack: 'ExamplesStack',
-  Settings: 'Settings',
+  SettingsStack: 'SettingsStack',
 } as const
 
 // ExamplesStack_SCREENS

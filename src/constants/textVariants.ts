@@ -14,22 +14,12 @@ export const textVariants: { [key in TextVariant]: VariantStyle } = {
     fontSize: '5xl',
     fontWeight: 'normal',
   },
-  H1Regular: {
-    fontFamily: 'heading',
-    fontSize: '5xl',
-    fontWeight: 'normal',
-  },
   H1Bold: {
     fontFamily: 'heading',
     fontSize: '5xl',
     fontWeight: 'bold',
   },
   H2: {
-    fontFamily: 'heading',
-    fontSize: '4xl',
-    fontWeight: 'normal',
-  },
-  H2Regular: {
     fontFamily: 'heading',
     fontSize: '4xl',
     fontWeight: 'normal',
@@ -44,22 +34,12 @@ export const textVariants: { [key in TextVariant]: VariantStyle } = {
     fontSize: '3xl',
     fontWeight: 'normal',
   },
-  H3Regular: {
-    fontFamily: 'heading',
-    fontSize: '3xl',
-    fontWeight: 'normal',
-  },
   H3Bold: {
     fontFamily: 'heading',
     fontSize: '3xl',
     fontWeight: 'bold',
   },
   H4: {
-    fontFamily: 'heading',
-    fontSize: '2xl',
-    fontWeight: 'normal',
-  },
-  H4Regular: {
     fontFamily: 'heading',
     fontSize: '2xl',
     fontWeight: 'normal',
@@ -74,22 +54,12 @@ export const textVariants: { [key in TextVariant]: VariantStyle } = {
     fontSize: 'xl',
     fontWeight: 'normal',
   },
-  H5Regular: {
-    fontFamily: 'heading',
-    fontSize: 'xl',
-    fontWeight: 'normal',
-  },
   H5Bold: {
     fontFamily: 'heading',
     fontSize: 'xl',
     fontWeight: 'bold',
   },
   H6: {
-    fontFamily: 'heading',
-    fontSize: 'lg',
-    fontWeight: 'normal',
-  },
-  H6Regular: {
     fontFamily: 'heading',
     fontSize: 'lg',
     fontWeight: 'normal',
@@ -114,17 +84,7 @@ export const textVariants: { [key in TextVariant]: VariantStyle } = {
     fontSize: 'md',
     fontWeight: 'normal',
   },
-  Regular: {
-    fontFamily: 'body',
-    fontSize: 'md',
-    fontWeight: 'normal',
-  },
   Bold: {
-    fontFamily: 'body',
-    fontSize: 'md',
-    fontWeight: 'bold',
-  },
-  BodyBold: {
     fontFamily: 'body',
     fontSize: 'md',
     fontWeight: 'bold',

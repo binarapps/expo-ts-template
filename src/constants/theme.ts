@@ -70,11 +70,11 @@ export const colorPalette = {
 
 export const colors = {
   primary: colorPalette.blue['500'],
-  primaryLight: colorPalette.blue['100'],
-  primaryDark: colorPalette.blue['900'],
-  secondary: colorPalette.red['300'],
-  secondaryLight: colorPalette.red['100'],
-  secondaryDark: colorPalette.red['900'],
+  primaryLight: colorPalette.blue['300'],
+  primaryDark: colorPalette.blue['700'],
+  secondary: colorPalette.red['500'],
+  secondaryLight: colorPalette.red['300'],
+  secondaryDark: colorPalette.red['700'],
   tertiary: colorPalette.green['500'],
   tertiaryLight: colorPalette.green['100'],
   tertiaryDark: colorPalette.green['900'],

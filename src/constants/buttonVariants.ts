@@ -25,29 +25,29 @@ type VariantStyle = {
 export const buttonVariants: { [key in ButtonVariant]: VariantStyle } = {
   Primary: {
     pressedStyle: {
-      backgroundColor: 'gray.900',
+      backgroundColor: 'primaryDark',
       color: 'white',
     },
     notPressedStyle: {
-      backgroundColor: 'black',
+      backgroundColor: 'primary',
       color: 'white',
     },
     disabledStyle: {
-      backgroundColor: 'gray.200',
+      backgroundColor: 'primaryLight',
       color: 'white',
     },
   },
   Secondary: {
     pressedStyle: {
-      backgroundColor: 'gray.400',
+      backgroundColor: 'secondaryDark',
       color: 'white',
     },
     notPressedStyle: {
-      backgroundColor: 'gray.500',
+      backgroundColor: 'secondary',
       color: 'white',
     },
     disabledStyle: {
-      backgroundColor: 'gray.200',
+      backgroundColor: 'secondaryLight',
       color: 'white',
     },
   },

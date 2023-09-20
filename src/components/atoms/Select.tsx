@@ -13,7 +13,7 @@ import { Box } from './Box'
 import { Icon } from './Icon'
 import { Row } from './Row'
 import { Text } from './Text'
-import { Touchable } from './Touchable'
+import { Touchable } from './Touchables/Touchable'
 import { SelectKey, SelectItemProps, SelectProps } from './types'
 
 import { useColorScheme } from '~contexts'

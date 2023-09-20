@@ -40,7 +40,7 @@ export const WebNavBar = (): JSX.Element => {
   )
 
   return (
-    <Box w="full" style={tabBarTheme.tabBarStyle}>
+    <Box width="full" style={tabBarTheme.tabBarStyle}>
       <Row alignItems="center" justifyContent="space-between" py="2" w={webContentWidth} mx="auto">
         <Row flex={1} {...(shouldApplyMobileStyles && { justifyContent: 'space-evenly' })}>
           {bottomTabsScreensData.map(({ name, icons, screens, options }) => {
@@ -54,18 +54,20 @@ export const WebNavBar = (): JSX.Element => {
                 <Touchable
                   // eslint-disable-next-line react/jsx-no-bind
                   onPress={() => handleTabPress(name)}
-                  bgColor="red"
+                  backgroundColor="red"
                 >
                   {({ isHovered, isPressed }) => (
                     <Box
                       // MOBILE
-                      flexDir={shouldApplyMobileStyles ? 'column' : 'row'}
+                      flexDirection={shouldApplyMobileStyles ? 'column' : 'row'}
                       style={
                         isPressed && shouldApplyMobileStyles ? styles.iconContainer : undefined
                       }
                       {...(shouldApplyMobileStyles && { alignItems: 'center' })}
                       // DESKTOP
-                      bgColor={isHovered && !shouldApplyMobileStyles ? 'light.200' : 'transparent'}
+                      backgroundColor={
+                        isHovered && !shouldApplyMobileStyles ? 'light' : 'transparent'
+                      }
                       p={!shouldApplyMobileStyles ? 3 : undefined}
                       // BOTH
                       borderRadius={8}
@@ -76,7 +78,7 @@ export const WebNavBar = (): JSX.Element => {
                           {options.title}
                         </Text>
                       ) : null}
-                      {focused && <Box bgColor="actionBlue" w="full" h="2px" />}
+                      {focused && <Box backgroundColor="info" w="full" h="2px" />}
                     </Box>
                   )}
                 </Touchable>

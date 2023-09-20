@@ -7,7 +7,7 @@ export * from './GradientBox'
 export * from './Row'
 export * from './Spacer'
 export * from './Text'
-export * from './Touchable'
+export * from './Touchables'
 export * from './ScrollView'
 export { LinearGradient as Gradient } from 'expo-linear-gradient'
 

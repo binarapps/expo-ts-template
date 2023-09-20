@@ -12,15 +12,15 @@ const colorsVariants: ColorNames[] = [
 ]
 
 export const ColorsScreen = (): JSX.Element => (
-  <ScrollView flexGrow={1} p={4} alignItems="center">
+  <ScrollView flexGrow={1} p={4}>
     {colorsVariants.map((colorVariant) => (
       <Center
         mb={4}
         key={colorVariant}
-        height={32}
-        width={256}
+        height={8}
+        width="full"
         alignSelf="stretch"
-        bg={colorVariant}
+        backgroundColor={colorVariant}
       >
         <Text color="white">{colorVariant}</Text>
       </Center>

@@ -2,11 +2,11 @@ import { memo } from 'react'
 import { ViewStyle } from 'react-native'
 
 import { Box } from './Box'
-import { SpacingValue } from './types'
+import { SizingValue } from './types'
 
 type SpacerProps = {
-  x?: SpacingValue | number
-  y?: SpacingValue | number
+  x?: SizingValue | number
+  y?: SizingValue | number
   flex?: ViewStyle['flex']
 }
 export const Spacer = memo<SpacerProps>(({ x = 0, y = 0, flex }) => (

@@ -16,7 +16,7 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.Primary title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       alignItems: 'center',
-      backgroundColor: theme.colors.black,
+      backgroundColor: theme.colors.primary,
       borderColor: 'transparent',
       borderRadius: 4,
       borderWidth: undefined,
@@ -32,7 +32,7 @@ describe('Button', () => {
     const { getByTestId } = render(<Button.Secondary title="Button" />)
     expect(getByTestId('baseButton').props.style).toStrictEqual({
       alignItems: 'center',
-      backgroundColor: theme.colors.gray[500],
+      backgroundColor: theme.colors.secondary,
       borderColor: 'transparent',
       borderRadius: 4,
       borderWidth: undefined,
@@ -97,7 +97,6 @@ describe('Button', () => {
     const { getByTestId, update } = render(<Button title="Button" onPress={onPress} />)
     const button = getByTestId('baseButton')
     fireEvent.press(button)
-
     await act(async () => {
       update(<Button />)
     })
@@ -109,7 +108,6 @@ describe('Button', () => {
     const { getByTestId, update } = render(<Button title="Button" disabled onPress={onPress} />)
     const button = getByTestId('baseButton')
     fireEvent.press(button)
-
     await act(async () => {
       update(<Button />)
     })
