@@ -85,6 +85,7 @@
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@gorhom/bottom-sheet": "^4.4.7",
+    "@gorhom/portal": "^1.0.14",
     "@motify/interactions": "^0.17.1",
     "@motify/skeleton": "^0.18.0",
     "@react-native-async-storage/async-storage": "1.18.2",

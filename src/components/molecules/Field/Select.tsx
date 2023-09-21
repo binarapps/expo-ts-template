@@ -1,12 +1,9 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
 import React from 'react'
 import { Pressable } from 'react-native'
 
-import { Select as CustomSelect, Box } from '../../atoms'
+import { Select as CustomSelect, Box, FormErrorMessage, FormLabel, SelectKey } from '../../atoms'
 import type { FieldSelectProps } from './types'
 
-import { FormErrorMessage, FormLabel, SelectKey } from '~components/atoms'
 import { useMemo } from '~hooks'
 
 const layoutPropsKeys = [

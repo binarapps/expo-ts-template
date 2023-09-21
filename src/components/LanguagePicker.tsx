@@ -1,6 +1,3 @@
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
-// Remove native-base components when issue is resolved
-import { Menu } from 'native-base'
 import { StyleSheet } from 'react-native'
 import Animated, {
   useAnimatedStyle,
@@ -14,6 +11,7 @@ import { Icon } from './atoms/Icon'
 import { Row } from './atoms/Row'
 import { Text } from './atoms/Text'
 import { Touchable, TouchableProps } from './atoms/Touchables/Touchable'
+import { Menu } from './organisms/Menu'
 
 import { useColorScheme } from '~contexts'
 import { useCallback, useTranslation, useTheme } from '~hooks'
@@ -41,11 +39,11 @@ export const LanguagePicker: React.FC = () => {
     (
       props: TouchableProps,
       state: {
-        open: boolean
+        isOpen: boolean
       }
     ) => {
       // Set animated value based on a `Menu` state
-      isOpen.value = state.open
+      isOpen.value = state.isOpen
 
       return (
         <Touchable {...props}>

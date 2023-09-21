@@ -23,7 +23,7 @@ export type TouchableRef = {
 } & Partial<TouchableOpacity>
 export type TouchableProps = StyledProps &
   Omit<TouchableOpacityProps, 'children'> & {
-    children: React.ReactNode | ((props: TouchableRef) => React.ReactNode)
+    children?: React.ReactNode | ((props: TouchableRef) => React.ReactNode)
   }
 
 export const Touchable = forwardRef<TouchableRef, TouchableProps>(({ children, ...props }, ref) => {

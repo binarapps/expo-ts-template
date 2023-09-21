@@ -64,8 +64,8 @@ export const ComponentsScreen = (): JSX.Element => {
         <Button.Primary title={t('components_screen.button_variants.primary')} />
         <Button.Primary
           mt={4}
-          leftIcon={<Icon name="account-box-fill" size={24} color={'amber.600'} />}
-          rightIcon={<Icon name="account-box-fill" size={24} color={'amber.600'} />}
+          leftIcon={<Icon name="account-box-fill" size={24} color="red.400" />}
+          rightIcon={<Icon name="account-box-fill" size={24} color="rgba(255,255,255,0.5)" />}
           title={t('components_screen.button_variants.with_icons')}
         />
         <Button.Secondary mt={4} title={t('components_screen.button_variants.secondary')} />
