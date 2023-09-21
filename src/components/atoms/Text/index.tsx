@@ -85,7 +85,7 @@ const RawText = memo<TextProps>(
 
     const textColor = useMemo<TextStyle>(
       () => ({
-        color: color ? getColorValue({ color, colors: theme.colors }) : undefined,
+        color: color ? getColorValue({ color, colors: theme.colors }) : theme.colors.text,
       }),
       [theme, color]
     )

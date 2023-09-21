@@ -5,7 +5,6 @@ import type { TouchableRef } from '../../atoms/Touchables/Touchable'
 import { FieldRadioProps } from './types'
 
 import { useColorScheme } from '~contexts'
-// TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
 import { useTheme } from '~hooks'
 
 export const Radio = forwardRef<TouchableRef, FieldRadioProps>(

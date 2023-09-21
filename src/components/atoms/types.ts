@@ -1,10 +1,10 @@
 import { IBoxProps, IInputProps } from 'native-base'
 import { DimensionValue, TextStyle, ViewProps, ViewStyle } from 'react-native'
 
-import { _appTheme } from '~constants'
+import { _appTheme, theme } from '~constants'
 import { IconNames } from '~types/icon'
 
-export type ColorNames = NestedKeys<typeof _appTheme.colors> | string
+export type ColorNames = NestedKeys<typeof theme.dark.colors> | string
 
 type Sizing =
   | 'w'

@@ -1,7 +1,4 @@
-import { ScrollView } from 'react-native'
-
-import { Version, Spacer } from '~components'
-import { Button, Center, Text } from '~components/atoms'
+import { Version, Spacer, Button, Center, Text, ScrollView } from '~components'
 import { colorSchemesList } from '~constants'
 import { useColorScheme } from '~contexts'
 import { useAuth, useCallback, useTranslation } from '~hooks'
@@ -20,7 +17,7 @@ export const SettingsScreen = (): JSX.Element => {
   )
 
   return (
-    <ScrollView>
+    <ScrollView mt={4}>
       <Center flex={1}>
         <Text fontSize="2xl" bold mb={2}>
           {t('settings_screen.current_theme', { theme: colorSchemeSetting })}

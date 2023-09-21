@@ -1,4 +1,4 @@
-import { _appTheme } from '~constants/theme'
+import { _appTheme, theme } from '~constants/theme'
 
 declare global {
   // FONTS
@@ -16,5 +16,5 @@ declare global {
   type SizeKeys = keyof Sizes
 
   // THEME
-  type AppTheme = typeof _appTheme
+  type AppTheme = typeof theme.light
 }
