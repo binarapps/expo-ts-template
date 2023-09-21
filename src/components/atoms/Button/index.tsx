@@ -15,7 +15,7 @@ import { Loader } from '../Loader'
 import { Text } from '../Text'
 import { StyledProps } from '../types'
 
-import { _appTheme } from '~constants'
+import { theme } from '~constants'
 import { buttonVariants } from '~constants/buttonVariants'
 import { getColorValue } from '~utils'
 
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   baseText: {
-    color: _appTheme.colors.white,
+    color: theme.light.colors.white,
     fontStyle: 'normal',
     fontWeight: '400',
     letterSpacing: 0,
@@ -73,11 +73,11 @@ const RawButton = memo<ButtonProps>(
       () => ({
         backgroundColor: getColorValue({
           color: pressedStyle.backgroundColor,
-          colors: _appTheme.colors,
+          colors: theme.light.colors,
         }),
         borderColor: getColorValue({
-          color: pressedStyle.borderColor,
-          colors: _appTheme.colors,
+          color: pressedStyle.borderColor!,
+          colors: theme.light.colors,
         }),
         borderWidth: pressedStyle.borderWidth,
       }),
@@ -87,8 +87,8 @@ const RawButton = memo<ButtonProps>(
     const pressedColorStyle = useMemo<TextStyle>(
       () => ({
         color: getColorValue({
-          color: pressedStyle.color,
-          colors: _appTheme.colors,
+          color: pressedStyle.color!,
+          colors: theme.light.colors,
         }),
       }),
       [pressedStyle]
@@ -98,11 +98,11 @@ const RawButton = memo<ButtonProps>(
       () => ({
         backgroundColor: getColorValue({
           color: notPressedStyle.backgroundColor,
-          colors: _appTheme.colors,
+          colors: theme.light.colors,
         }),
         borderColor: getColorValue({
-          color: notPressedStyle.borderColor,
-          colors: _appTheme.colors,
+          color: notPressedStyle.borderColor!,
+          colors: theme.light.colors,
         }),
         borderWidth: notPressedStyle.borderWidth,
       }),
@@ -112,8 +112,8 @@ const RawButton = memo<ButtonProps>(
     const notPressedColorStyle = useMemo<TextStyle>(
       () => ({
         color: getColorValue({
-          color: notPressedStyle.color,
-          colors: _appTheme.colors,
+          color: notPressedStyle.color!,
+          colors: theme.light.colors,
         }),
       }),
       [notPressedStyle]
@@ -123,11 +123,11 @@ const RawButton = memo<ButtonProps>(
       () => ({
         backgroundColor: getColorValue({
           color: disabledStyle.backgroundColor,
-          colors: _appTheme.colors,
+          colors: theme.light.colors,
         }),
         borderColor: getColorValue({
-          color: disabledStyle.borderColor,
-          colors: _appTheme.colors,
+          color: disabledStyle.borderColor!,
+          colors: theme.light.colors,
         }),
         borderWidth: disabledStyle.borderWidth,
       }),
@@ -137,8 +137,8 @@ const RawButton = memo<ButtonProps>(
     const disabledColorStyle = useMemo<TextStyle>(
       () => ({
         color: getColorValue({
-          color: disabledStyle.color,
-          colors: _appTheme.colors,
+          color: disabledStyle.color!,
+          colors: theme.light.colors,
         }),
       }),
       [disabledStyle]

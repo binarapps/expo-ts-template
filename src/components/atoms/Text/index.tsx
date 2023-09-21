@@ -28,7 +28,7 @@ type TypographyProps = {
   lowercase?: boolean
   variant?: TextVariant
 }
-export type TextProps = StyledProps & BaseTextProps & TypographyProps
+type TextProps = StyledProps & BaseTextProps & TypographyProps
 
 const RawText = memo<TextProps>(
   ({

@@ -48,10 +48,8 @@ export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
               key={index}
               onPress={() => onChange(item)}
               alignItems="center"
-              flex={1}
               flexDirection="row"
-              height={40}
-              width="100%"
+              height={8}
             >
               <Box
                 alignItems="center"

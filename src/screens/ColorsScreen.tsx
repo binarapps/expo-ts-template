@@ -1,6 +1,6 @@
 import { Text, Center, ScrollView } from '~components'
 
-const colorsVariants: ColorNames[] = [
+const colorsVariants: NestedKeys<Colors>[] = [
   'primary',
   'secondary',
   'tertiary',

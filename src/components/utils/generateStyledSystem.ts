@@ -83,7 +83,7 @@ const generateBgStyle = (
 ): StyleProp<ViewStyle> => {
   if (!bg && !backgroundColor) return undefined
 
-  const color = getColorValue({ color: bg || backgroundColor, colors })
+  const color = getColorValue({ color: (bg || backgroundColor) as ColorNames, colors })
   if (color && (typeof bgOpacity === 'number' || typeof backgroundOpacity === 'number')) {
     return { backgroundColor: hex2rgba(color, (bgOpacity || backgroundOpacity) as number) }
   }

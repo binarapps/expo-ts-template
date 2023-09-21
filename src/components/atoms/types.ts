@@ -1,10 +1,8 @@
-import { IBoxProps, IInputProps } from 'native-base'
-import { DimensionValue, TextStyle, ViewProps, ViewStyle } from 'react-native'
+import { IBoxProps } from 'native-base'
+import { DimensionValue, TextStyle, ViewProps, ViewStyle, TextInputProps } from 'react-native'
 
-import { _appTheme, theme } from '~constants'
+import { _appTheme } from '~constants'
 import { IconNames } from '~types/icon'
-
-export type ColorNames = NestedKeys<typeof theme.dark.colors> | string
 
 type Sizing =
   | 'w'
@@ -123,6 +121,24 @@ export type BordersProps = {
   borderRightWidth?: ViewStyle['borderRightWidth']
 }
 
+export type TextProps = {
+  color?: ColorNames
+  fontSize?: FontSizes
+  letterSpacing?: LetterSpacings
+  lineHeight?: LineHeights
+  fontWeight?: FontWeights
+  fontFamily?: Fonts
+  bold?: boolean
+  italic?: boolean
+  capitalize?: boolean
+  lowercase?: boolean
+  uppercase?: boolean
+  underline?: boolean
+  strikeThrough?: boolean
+  textDecoration?: TextStyle['textDecorationLine']
+  textTransform?: TextStyle['textTransform']
+}
+
 export type LayoutsProps = {
   position?: ViewStyle['position']
   zIndex?: ViewStyle['zIndex']
@@ -155,11 +171,19 @@ export type SpacerProps = {
   flex?: ViewStyle['flex']
 }
 
-export type InputProps = IInputProps & {
-  secureTextIconName?: IconNames
-  secureTextIconColor?: ColorNames
-  secureTextIconSize?: number
-}
+export type InputProps = TextProps &
+  StyledProps &
+  TextInputProps & {
+    isDisabled?: boolean
+    isInvalid?: boolean
+    rightElement?: JSX.Element
+    leftElement?: JSX.Element
+
+    secureTextIconName?: IconNames
+    secureTextIconColor?: ColorNames
+    secureTextIconSize?: number
+    type?: 'text' | 'password'
+  }
 
 export type SelectKey = string | number
 

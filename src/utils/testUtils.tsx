@@ -1,3 +1,4 @@
+import { PortalProvider } from '@gorhom/portal'
 import { NavigationContainer } from '@react-navigation/native'
 import { render, RenderAPI } from '@testing-library/react-native'
 // TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
@@ -18,15 +19,17 @@ const nbInitialWindowMetrics = {
 }
 
 const ProvidersWrapper: React.FC<PropsWithChildren> = ({ children }) => (
-  <AuthProvider>
-    <NativeBaseProvider initialWindowMetrics={nbInitialWindowMetrics}>
-      <NavigationContainer>
-        <ColorSchemeProvider>
-          <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
-        </ColorSchemeProvider>
-      </NavigationContainer>
-    </NativeBaseProvider>
-  </AuthProvider>
+  <PortalProvider>
+    <AuthProvider>
+      <NativeBaseProvider initialWindowMetrics={nbInitialWindowMetrics}>
+        <NavigationContainer>
+          <ColorSchemeProvider>
+            <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+          </ColorSchemeProvider>
+        </NavigationContainer>
+      </NativeBaseProvider>
+    </AuthProvider>
+  </PortalProvider>
 )
 
 const customRender = (ui: ReactElement, options?: RenderOptions): RenderAPI => {

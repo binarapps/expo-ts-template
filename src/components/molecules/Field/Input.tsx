@@ -88,7 +88,6 @@ export const Input = forwardRef<Partial<TextInput>, FieldInputProps>(
         <Pressable onPress={handleFocus}>
           <FormLabel label={label} isRequired={isRequired} labelStyle={labelStyle} />
           <BaseInput
-            isRequired={isRequired}
             isInvalid={isInvalid || Boolean(errorMessage)}
             {...inputProps}
             ref={_inputRef}

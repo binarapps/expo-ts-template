@@ -23,7 +23,6 @@ const fontWeightsMap: { [key in FontWeights]: TextStyle['fontWeight'] } = {
   semibold: '600',
   extrabold: '800',
   black: '900',
-  extraBlack: '900',
 }
 
 export const getFontWeight = (fontWeight: FontWeights): TextStyle['fontWeight'] =>
