@@ -1,4 +1,3 @@
-export * from './NativeBaseConfig'
 export * from './asyncStorageKeys'
 export * from './breakpoints'
 export * from './colorSchemes'

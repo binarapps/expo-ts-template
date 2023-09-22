@@ -1,5 +1,6 @@
-import { IBoxProps } from 'native-base'
 import { DimensionValue, TextStyle, ViewProps, ViewStyle, TextInputProps } from 'react-native'
+
+import { BoxProps } from './Box'
 
 import { _appTheme } from '~constants'
 import { IconNames } from '~types/icon'
@@ -163,7 +164,7 @@ export type FormLabelProps = {
   labelStyle?: TextStyle
 }
 
-export type AbsoluteProps = Omit<IBoxProps, 'position'>
+export type AbsoluteProps = Omit<BoxProps, 'position'>
 
 export type SpacerProps = {
   x?: SizingValue

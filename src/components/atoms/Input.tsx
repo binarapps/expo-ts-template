@@ -24,6 +24,33 @@ import {
 } from '~hooks'
 import { convertEmToNumber, getColorValue, getFontWeight } from '~utils'
 
+const layoutPropsKeys = [
+  'm',
+  'margin',
+  'mt',
+  'marginTop',
+  'mr',
+  'marginRight',
+  'mb',
+  'marginBottom',
+  'ml',
+  'marginLeft',
+  'mx',
+  'my',
+  'p',
+  'padding',
+  'pt',
+  'paddingTop',
+  'pr',
+  'paddingRight',
+  'pb',
+  'paddingBottom',
+  'pl',
+  'paddingLeft',
+  'px',
+  'py',
+]
+
 const StyledInput = forwardRef<TextInput, InputProps>((props, ref) => {
   const { colors, fontSizes, fontWeights, fonts, lineHeights } = useTheme()
 
@@ -168,6 +195,17 @@ export const Input = forwardRef<TextInput, InputProps>(
     const _inputRef = useRef<TextInput>(null)
     const { securePassword, toggleSecurePassword, iconName } = useSecurePassword(props.type)
 
+    const layoutProps = useMemo(
+      () =>
+        Object.fromEntries(Object.entries(props).filter(([key]) => layoutPropsKeys.includes(key))),
+      [props]
+    )
+    const inputProps = useMemo(
+      () =>
+        Object.fromEntries(Object.entries(props).filter(([key]) => !layoutPropsKeys.includes(key))),
+      [props]
+    )
+
     const handleFocus = useCallback(
       (e?: NativeSyntheticEvent<TextInputFocusEventData>) => {
         _inputRef.current?.focus()
@@ -210,6 +248,7 @@ export const Input = forwardRef<TextInput, InputProps>(
         backgroundColor={isInvalid ? colors.danger : isFocused ? colors.primaryLight : colors.white}
         bgOpacity={isFocused ? 0.1 : 1}
         {...inputShadow}
+        {...layoutProps}
       >
         <StyledInput
           ref={_inputRef}
@@ -229,7 +268,7 @@ export const Input = forwardRef<TextInput, InputProps>(
           secureTextEntry={securePassword}
           selectionColor={colors.primaryLight}
           width="100%"
-          {...props}
+          {...inputProps}
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
