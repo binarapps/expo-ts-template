@@ -13,13 +13,13 @@ import Animated, {
 import { Box } from './Box'
 
 export type DiskLoaderType = {
-  circleColor?: string
+  circleColor?: ColorNames
   containerColor?: string
   size?: number
 }
 
 export const DiskLoader = ({
-  circleColor = '#4c5630',
+  circleColor = 'green.400',
   containerColor = '#b3c430',
   size = 40,
 }: DiskLoaderType): JSX.Element => {

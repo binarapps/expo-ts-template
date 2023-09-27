@@ -14,7 +14,7 @@ export const useNavigationTheme = () => {
       tabBarActiveTintColor: colors.primary,
       tabBarInactiveTintColor: colors.gray[500],
       tabBarStyle: {
-        backgroundColor: colorScheme === 'dark' ? colors.gray[900] : colors.light[100],
+        backgroundColor: colorScheme === 'dark' ? colors.gray[900] : colors.light,
         paddingTop: 4,
       },
     }),

@@ -1,11 +1,5 @@
 import { forwardRef } from 'react'
-import {
-  NativeSyntheticEvent,
-  StyleSheet,
-  TextInput,
-  TextInputFocusEventData,
-  TextStyle,
-} from 'react-native'
+import { NativeSyntheticEvent, TextInput, TextInputFocusEventData, TextStyle } from 'react-native'
 
 import { generateStyleSheet, generateStyledSystem } from '../utils'
 import { Box } from './Box'
@@ -240,12 +234,10 @@ export const Input = forwardRef<TextInput, InputProps>(
         flexDirection="row"
         alignItems="center"
         overflow="hidden"
-        borderColor={
-          isInvalid ? colors.danger : isFocused ? colors.primaryLight : colors.gray['100']
-        }
+        borderColor={isInvalid ? 'danger' : isFocused ? 'primaryLight' : 'inputBorder'}
         borderRadius={4}
-        borderWidth={StyleSheet.hairlineWidth}
-        backgroundColor={isInvalid ? colors.danger : isFocused ? colors.primaryLight : colors.white}
+        borderWidth={1}
+        backgroundColor={isInvalid ? 'danger' : isFocused ? 'primaryLight' : 'background'}
         bgOpacity={isFocused ? 0.1 : 1}
         {...inputShadow}
         {...layoutProps}
@@ -253,7 +245,7 @@ export const Input = forwardRef<TextInput, InputProps>(
         <StyledInput
           ref={_inputRef}
           autoCapitalize="none"
-          color={isInvalid ? colors.danger : colors.text}
+          color={isInvalid ? 'danger' : 'text'}
           cursorColor={colors.primaryLight}
           editable={!isDisabled}
           flex={1}
@@ -276,7 +268,7 @@ export const Input = forwardRef<TextInput, InputProps>(
           <Touchable mr={2} onPress={toggleSecurePassword}>
             <Icon
               name={secureTextIconName || iconName}
-              color={secureTextIconColor || colors.gray['400']}
+              color={secureTextIconColor || 'gray.400'}
               size={secureTextIconSize}
             />
           </Touchable>

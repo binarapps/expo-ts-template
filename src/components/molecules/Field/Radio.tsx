@@ -4,9 +4,6 @@ import { FormErrorMessage, FormLabel, Box, Touchable, Text } from '../../atoms'
 import type { TouchableRef } from '../../atoms/Touchables/Touchable'
 import { FieldRadioProps } from './types'
 
-import { useColorScheme } from '~contexts'
-import { useTheme } from '~hooks'
-
 export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
   (
     {
@@ -22,21 +19,13 @@ export const Radio = forwardRef<TouchableRef, FieldRadioProps>(
     },
     ref
   ) => {
-    const { colors } = useTheme()
-    const { colorScheme } = useColorScheme()
-
-    const themeColors = useMemo(
-      () => (colorScheme === 'light' ? colors.black : colors.white),
-      [colors, colorScheme]
-    )
-
     const borderColor = useMemo(
-      () => (isError ? colors.red['500'] : isDisabled ? colors.gray['400'] : themeColors),
-      [isError, themeColors, colors, isDisabled]
+      () => (isError ? 'red.500' : isDisabled ? 'gray.400' : 'inputBorder'),
+      [isError, isDisabled]
     )
     const bgColor = useCallback(
-      (item: string) => (item === value ? colors.blue['500'] : colors.gray['500']),
-      [value, colors]
+      (item: string) => (item === value ? 'blue.500' : 'gray.500'),
+      [value]
     )
 
     const renderRadioButtons = useMemo(

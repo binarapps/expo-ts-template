@@ -34,7 +34,7 @@ const RawText = memo<TextProps>(
   ({
     bold,
     capitalize,
-    color,
+    color = 'text',
     italic,
     letterSpacing,
     lineHeight,

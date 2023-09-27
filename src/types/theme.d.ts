@@ -1,4 +1,3 @@
-import { ColorValue } from 'react-native'
 import { theme } from '~constants/theme'
 
 declare global {
@@ -14,7 +13,7 @@ declare global {
 
   // COLORS
   type Colors = AppTheme['colors']
-  type ColorNames = NestedKeys<Colors> | ColorValue
+  type ColorNames = NestedKeys<Colors>
 
   type Sizes = AppTheme['sizes']
   type SizeKeys = keyof Sizes

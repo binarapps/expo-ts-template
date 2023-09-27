@@ -1,8 +1,8 @@
 import type { Theme } from '@react-navigation/native'
 
 export const palette = {
-  black: '#000',
-  white: '#fff',
+  black: '#000000',
+  white: '#ffffff',
   transparent: 'transparent',
   red: {
     50: '#fff1f2',
@@ -89,6 +89,7 @@ export const colors = {
 
 export const ProjectColors = {
   //CONFIG: Add your project specific colors here
+  modalBackground: 'rgba(0, 0, 0, 0.5)',
 }
 
 export const fontSizes = {
@@ -352,6 +353,7 @@ export const theme = {
       card: _appTheme.colors.white,
       text: _appTheme.colors.dark,
       notification: _appTheme.colors.secondaryLight,
+      inputBorder: _appTheme.colors.gray['700'],
     },
   },
   dark: {
@@ -363,6 +365,7 @@ export const theme = {
       card: _appTheme.colors.dark,
       text: _appTheme.colors.white,
       notification: _appTheme.colors.secondaryLight,
+      inputBorder: _appTheme.colors.gray['200'],
     },
   },
 }

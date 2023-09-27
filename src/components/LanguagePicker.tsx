@@ -17,7 +17,7 @@ import { useColorScheme } from '~contexts'
 import { useCallback, useTranslation, useTheme } from '~hooks'
 
 export const LanguagePicker: React.FC = () => {
-  const { size, colors } = useTheme()
+  const { size } = useTheme()
 
   const { colorScheme } = useColorScheme()
   const { i18n } = useTranslation()
@@ -33,7 +33,7 @@ export const LanguagePicker: React.FC = () => {
     icon: { height: size['8'], justifyContent: 'center' },
   })
 
-  const iconColor = colorScheme === 'light' ? colors.black : colors.white
+  const iconColor = colorScheme === 'light' ? 'black' : 'white'
 
   const renderTrigger = useCallback(
     (
