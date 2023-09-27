@@ -58,7 +58,7 @@ export const BottomSheet = ({
         borderRadius={8}
         borderColor={colorScheme === 'dark' ? 'gray.900' : 'light'}
         borderWidth={1}
-        w={webContentWidth}
+        maxW={webContentWidth}
       >
         <BottomSheetHeader
           title={title}
