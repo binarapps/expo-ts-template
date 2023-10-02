@@ -1,4 +1,4 @@
-import { ScrollView, Switch } from 'react-native'
+import { ScrollView, Switch, Platform } from 'react-native'
 
 import { Column, Row, Box, Text } from '~components'
 import { useColorScheme } from '~contexts'
@@ -19,11 +19,13 @@ export const fontSizes = [
   '8xl',
   '9xl',
 ] as const
+const isWeb = Platform.OS === 'web'
 
 export const TypographyScreen = (): JSX.Element => {
   const { setColorSchemeSetting, colorScheme } = useColorScheme()
 
   const { t } = useTranslation()
+
   return (
     <ScrollView>
       <Row>
@@ -37,7 +39,15 @@ export const TypographyScreen = (): JSX.Element => {
             <Box mx={4} my={8}>
               <Switch
                 value={colorScheme === 'dark'}
-                onChange={() => setColorSchemeSetting(colorScheme === 'dark' ? 'light' : 'dark')}
+                {...(isWeb
+                  ? {
+                      onValueChange: () =>
+                        setColorSchemeSetting(colorScheme === 'dark' ? 'light' : 'dark'),
+                    }
+                  : {
+                      onChange: () =>
+                        setColorSchemeSetting(colorScheme === 'dark' ? 'light' : 'dark'),
+                    })}
               />
             </Box>
             <Text>🌚</Text>
