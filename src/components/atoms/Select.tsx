@@ -70,7 +70,6 @@ const SelectItem = <T extends SelectKey>({
         <Row mb={4}>
           <Box
             borderRadius={5}
-            hitSlop={{ top: 5, left: 15, bottom: 5 }}
             borderColor={disabled && !selected ? 'gray.500' : 'inputBorder'}
             borderWidth={1}
             width={5}
