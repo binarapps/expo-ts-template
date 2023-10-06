@@ -38,7 +38,6 @@ declare global {
     SignIn: undefined
 
     // Root_authorized
-    TodoDetails: undefined
     MainTab: NavigatorScreenParams<MainTabParamList>
 
     // Root_modals
@@ -66,7 +65,6 @@ declare global {
   type RootStackScreenProps = ScreenComposite
 
   // RootStack_SCREENS
-  type TodoDetailsScreenProps = ScreenComposite<'TodoDetails'>
 
   // HomeStack_SCREENS
   type HomeScreenProps = ScreenComposite<'Home'>

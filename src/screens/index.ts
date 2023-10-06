@@ -12,5 +12,3 @@ export * from './SignUpScreen'
 export * from './TypographyScreen'
 
 export * from './TestFormScreen'
-
-export * from './TodoDetailsScreen'
