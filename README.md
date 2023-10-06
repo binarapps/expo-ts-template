@@ -46,6 +46,10 @@ We know there are a lot of project starters for react native, but we have some g
   - app is fully typed
 - [Expo v49](https://github.com/expo/expo)
 - [React Navigation v6](https://github.com/react-navigation/react-navigation)
+<!--
+  TODO: ISSUE-33 (https://github.com/binarapps/expo-ts-template/issues/33)
+  Replace with\ a new UI lib.
+-->
 - Native-base v3.4
 - Prettier and eslint
   - code formatting
@@ -93,10 +97,8 @@ We know there are a lot of project starters for react native, but we have some g
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here) -->
 
-## Working with designer in your project
-
-Expo template, you are going to use - bundles native-base ui lib out of the box.
-To have the best starting experience in your project - write a dm to your designer that they should use [NativeBase Figma Design Kit](https://www.figma.com/community/file/1050753649783931446)
+<!-- TODO: Write guide for that section when design system will be chosen. -->
+<!-- ## Working with designer in your project -->
 
 <!--
   TODO: add documentation
@@ -134,7 +136,7 @@ Contributions are always welcome!
 
 <!-- TODO: Create such files and add hyperlinks to them. -->
 
-See `contributing.md` for ways to get started.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's `code of conduct`.
 

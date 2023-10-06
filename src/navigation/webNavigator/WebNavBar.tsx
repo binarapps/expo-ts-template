@@ -1,10 +1,9 @@
-import { Box, Pressable, Row, Text } from 'native-base'
 import React, { useCallback } from 'react'
 import { StyleSheet } from 'react-native'
 
 import { BottomTabsScreensKeys } from '../config/enums'
 
-import { Icon } from '~components'
+import { Icon, Box, Row, Text, Touchable, Absolute } from '~components'
 import { TAB_DEFAULT_ICON, WEB_NAV_BAR_ICON_SIZE } from '~constants'
 import { useNavigation, useNavigationState, useNavigationTheme, useWeb } from '~hooks'
 import { bottomTabsScreensData } from '~navigation/config/tabs'
@@ -41,46 +40,47 @@ export const WebNavBar = (): JSX.Element => {
   )
 
   return (
-    <Box w="full" style={tabBarTheme.tabBarStyle}>
+    <Box width="full" style={tabBarTheme.tabBarStyle}>
       <Row alignItems="center" justifyContent="space-between" py="2" w={webContentWidth} mx="auto">
         <Row flex={1} {...(shouldApplyMobileStyles && { justifyContent: 'space-evenly' })}>
           {bottomTabsScreensData.map(({ name, icons, screens, options }) => {
             const focused = isActiveTab(screens)
             const iconToRender = (focused ? icons.active : icons.inactive) || TAB_DEFAULT_ICON
-            const color = focused
-              ? tabBarTheme.tabBarActiveTintColor
-              : tabBarTheme.tabBarInactiveTintColor
+            const color = (
+              focused ? tabBarTheme.tabBarActiveTintColor : tabBarTheme.tabBarInactiveTintColor
+            ) as ColorNames
             return (
               <Box key={name} mx="2">
-                <Pressable
+                <Touchable
                   // eslint-disable-next-line react/jsx-no-bind
                   onPress={() => handleTabPress(name)}
-                  bgColor="red"
                 >
                   {({ isHovered, isPressed }) => (
-                    <Box
-                      // MOBILE
-                      flexDir={shouldApplyMobileStyles ? 'column' : 'row'}
-                      style={
-                        isPressed && shouldApplyMobileStyles ? styles.iconContainer : undefined
-                      }
-                      {...(shouldApplyMobileStyles && { alignItems: 'center' })}
-                      // DESKTOP
-                      bgColor={isHovered && !shouldApplyMobileStyles ? 'light.200' : 'transparent'}
-                      p={!shouldApplyMobileStyles ? 3 : undefined}
-                      // BOTH
-                      borderRadius={8}
-                    >
-                      <Icon name={iconToRender} size={WEB_NAV_BAR_ICON_SIZE} color={color} />
-                      {options.title ? (
-                        <Text bold={focused} color={color} ml="1">
-                          {options.title}
-                        </Text>
-                      ) : null}
-                      {focused && <Box bgColor="actionBlue" w="full" h="2px" />}
-                    </Box>
+                    <>
+                      <Box
+                        // MOBILE
+                        flexDirection={shouldApplyMobileStyles ? 'column' : 'row'}
+                        style={
+                          isPressed && shouldApplyMobileStyles ? styles.iconContainer : undefined
+                        }
+                        {...(shouldApplyMobileStyles && { alignItems: 'center' })}
+                        // DESKTOP
+                        backgroundColor={isHovered ? 'light' : 'transparent'}
+                        p={!shouldApplyMobileStyles ? 3 : undefined}
+                        // BOTH
+                        borderRadius={8}
+                      >
+                        <Icon name={iconToRender} size={WEB_NAV_BAR_ICON_SIZE} color={color} />
+                        {options.title ? (
+                          <Text bold={focused} color={color} ml="1">
+                            {options.title}
+                          </Text>
+                        ) : null}
+                      </Box>
+                      {focused && <Absolute bottom={1} backgroundColor={color} w="full" h="2px" />}
+                    </>
                   )}
-                </Pressable>
+                </Touchable>
               </Box>
             )
           })}
