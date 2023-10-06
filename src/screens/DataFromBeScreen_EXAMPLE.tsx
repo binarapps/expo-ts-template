@@ -19,7 +19,7 @@ export const DataFromBeScreen_EXAMPLE = () => {
 
   return (
     <Box flex={1}>
-      <Center>
+      <Center flex={1}>
         <Text fontSize="xl">THIS IS EXAMPLE SCREEN</Text>
         <Text fontSize="xl">which contains data from backend</Text>
         <Spacer y="1" />
