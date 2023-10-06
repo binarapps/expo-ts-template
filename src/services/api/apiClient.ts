@@ -29,7 +29,7 @@ apiClient.interceptors.request.use(injectTokenToRequest, (error) => {
 
 apiClient.interceptors.response.use(
   async (response) => {
-    return response?.data?.data
+    return response?.data
   },
   async (error: AxiosError<ApiError>) => {
     const errorMessage = error?.response?.data?.message
