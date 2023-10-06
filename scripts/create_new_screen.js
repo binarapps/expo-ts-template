@@ -36,7 +36,9 @@ const validateScreen = (name) => {
 
 const createScreenFile = (name) => {
   const screenFromFile = fs.readFileSync('./templates/screen_template.tsx', 'utf8')
-  const screenContent = screenFromFile.replaceAll('_NAME_', name)
+  const screenContent = screenFromFile
+    .replaceAll('_NAME_', name)
+    .replace("// @ts-expect-error: it's a template and will be removed", '')
 
   fs.writeFileSync(`./src/screens/${name}Screen.tsx`, screenContent)
 }
