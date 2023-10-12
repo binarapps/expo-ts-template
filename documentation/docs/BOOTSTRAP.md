@@ -188,3 +188,8 @@ If you have some domain, for example: example.com, your bundle id could be: `com
 ```sh
 yarn bootstrap:new_app
 ```
+
+## Potential issues
+
+- gitignore
+  - It's possible that gitgnore will not hide correct files, if that's the case please check template repo and copy `.gitignore` file
