@@ -173,7 +173,7 @@ If you have some domain, for example: example.com, your bundle id could be: `com
     "owner": "expo_owner_name",
     "slug": "expo_app_slug",
     "easProjectId": "xxx-xxx-xxx-xx",
-    "scheme": "your_url_scheme",
+    "scheme": "yourUrlScheme",
     "adaptiveIconBackgroundColor": "#2E7AF0CC"
   }
   ```
