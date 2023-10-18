@@ -10,9 +10,9 @@ export const DataFromBeScreen_EXAMPLE = () => {
 
   const renderItem: ListRenderItem<TodoItem> = useCallback(({ item: { title, id } }) => {
     return (
-      <Box mb="1" bg="gray.300">
-        <Text>{'fact:' + title}</Text>
-        <Text>{'length: ' + id}</Text>
+      <Box mb="1" bg="gray.200" borderRadius={2} m={2}>
+        <Text>{'title:' + title}</Text>
+        <Text>{'id: ' + id}</Text>
       </Box>
     )
   }, [])

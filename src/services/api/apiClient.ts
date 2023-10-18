@@ -29,6 +29,8 @@ apiClient.interceptors.request.use(injectTokenToRequest, (error) => {
 
 apiClient.interceptors.response.use(
   async (response) => {
+    // CONFIG: Verify what response is your backend returning
+    // Sometimes it's response.data.data
     return response?.data
   },
   async (error: AxiosError<ApiError>) => {
