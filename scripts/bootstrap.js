@@ -52,12 +52,12 @@ const replatePullRequestTemplate = () => {
 
 // 4.
 const changeAppJson = (appName, appSlug, organizationOwner) => {
-  const appJson = JSON.parse(fs.readFileSync(appJson, 'utf8'))
+  const appJson = JSON.parse(fs.readFileSync(paths.appJson, 'utf8'))
   appJson.expo.slug = appSlug
   appJson.expo.name = appName
   appJson.expo.owner = organizationOwner
   appJson.version = '1.0.0'
-  fs.writeFileSync('./app.json', JSON.stringify(appJson, null, 2))
+  fs.writeFileSync('./app.json', JSON.stringify(paths.appJson, null, 2))
 }
 
 // 5.
@@ -76,7 +76,7 @@ const changePackageJson = (appName, organizationOwner) => {
 
 // 6.
 const removeIssueTemplates = () => {
-  fs.rm('./.github/ISSUE_TEMPLATE', { recursive: true, force: true })
+  fs.rm('./.github/ISSUE_TEMPLATE', { recursive: true, force: true }, () => {})
 }
 
 const setUpProject = async (
