@@ -52,12 +52,12 @@ const replatePullRequestTemplate = () => {
 
 // 4.
 const changeAppJson = (appName, appSlug, organizationOwner) => {
-  const appJson = JSON.parse(fs.readFileSync(paths.appJson, 'utf8'))
-  appJson.expo.slug = appSlug
-  appJson.expo.name = appName
-  appJson.expo.owner = organizationOwner
-  appJson.version = '1.0.0'
-  fs.writeFileSync('./app.json', JSON.stringify(paths.appJson, null, 2))
+  const newAppJson = JSON.parse(fs.readFileSync(paths.appJson, 'utf8'))
+  newAppJson.expo.slug = appSlug
+  newAppJson.expo.name = appName
+  newAppJson.expo.owner = organizationOwner
+  newAppJson.version = '1.0.0'
+  fs.writeFileSync(paths.appJson, JSON.stringify(newAppJson, null, 2))
 }
 
 // 5.
