@@ -41,6 +41,8 @@ export const Touchable = forwardRef<TouchableRef, TouchableProps>(({ children, .
       isHovered,
       isPressed,
       isFocused,
+      focus: () => {},
+      blur: () => {},
       ..._touchableRef.current,
     }),
     [isFocused, isHovered, isPressed]
