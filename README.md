@@ -27,6 +27,7 @@ We know there are a lot of project starters for react native, but we have some g
 ## How it looks?
 
 Check this recording of how it look like:
+
 [![expo-ts-template binarapps](https://img.youtube.com/vi/NmTd5nXXTLI/0.jpg)](https://www.youtube.com/watch?v=NmTd5nXXTLI)
 
 ## How to use?
