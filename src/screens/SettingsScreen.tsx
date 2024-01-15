@@ -1,13 +1,13 @@
 import { Version, Spacer, Button, Center, Text, ScrollView } from '~components'
 import { colorSchemesList } from '~constants'
 import { useColorScheme } from '~contexts'
-import { useAuth, useCallback, useTranslation } from '~hooks'
+import { useCallback, useTranslation } from '~hooks'
+import { signOut } from '~store/auth'
 import { noop } from '~utils'
 
 export const SettingsScreen = (): JSX.Element => {
   const { t } = useTranslation()
   const { setColorSchemeSetting, colorSchemeSetting } = useColorScheme()
-  const { signOut } = useAuth()
 
   const handleColorSchemeSettingChange = useCallback(
     (scheme: typeof colorSchemeSetting) => () => {

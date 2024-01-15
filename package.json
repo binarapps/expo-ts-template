@@ -124,6 +124,7 @@
     "expo-updates": "~0.18.16",
     "expo-web-browser": "~12.3.2",
     "i18next": "^23.2.10",
+    "jotai": "^2.4.3",
     "moti": "^0.25.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
